@@ -67,9 +67,31 @@ def get_player(uuid=None):
 
 @app.route("/api/game/players/<uuid>/password", methods=['PATCH'])
 def patch_password(uuid=None):
-    print("=============")
-    print(uuid + " change_password")
-    print("=============")
+    data = request.get_json()
+    if data['uuid'] is None:
+        print("error: no uuid")
+    else:
+        p = g.session.query(Player).filter(
+            Player.uuid == data['uuid']
+        ).first()
+        if p is None:
+            pass
+        else:
+            if p.password == data['password']:
+                pass
+            else:
+                print("isalnum")
+                print("=====")
+                print(data['password'].encode('utf-8').isalnum())
+                print(str(data['password']))
+                print("=====")
+                if (len(data['password'])) <= 4 and data['password'].encode('utf-8').isalnum():
+                    print("パスワードは4文字以上でお願いします.")
+                    print("パスワードは英語のみでお願いします.")
+                else:
+                    p.password = data['password']
+                    g.session.commit()
+
     return "GET: /api/game/players/<uuid>/password"
 
 # EMAIL変更
@@ -88,7 +110,7 @@ def patch_email(uuid=None):
             if p.email == data['email']:
                 pass
             else:
-                p.email = p.email = data['email']
+                p.email= data['email']
                 g.session.commit()
     return "GET: /api/game/players/<uuid>/email"
 
