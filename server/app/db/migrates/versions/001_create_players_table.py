@@ -8,6 +8,7 @@ table = Table(
     Column('uuid', String(255), nullable=False),
     Column('name', String(255), nullable=False),
     Column('password', String(255)),
+    Column('email', String(255)),
     Column('login_count', Integer, default=0),
     Column('last_login_at', DateTime),
     Column('created_at', DateTime),
