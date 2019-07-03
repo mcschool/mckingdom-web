@@ -81,10 +81,6 @@ def patch_password(uuid=None):
                 pass
             else:
                 print("isalnum")
-                print("=====")
-                print(data['password'].encode('utf-8').isalnum())
-                print(str(data['password']))
-                print("=====")
                 if (len(data['password'])) <= 4 and data['password'].encode('utf-8').isalnum():
                     print("パスワードは4文字以上でお願いします.")
                     print("パスワードは英語のみでお願いします.")
