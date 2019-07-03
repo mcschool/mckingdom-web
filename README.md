@@ -24,5 +24,14 @@ GET
 $ curl localhost:5000/api/admin/players
 
 POST
-$ curl -d "{uuid: '******', name:'+++++++'}" localhost:5000/api/game/players
+$ curl -X POST -H "Content-Type: application/json" -d '{"uuid": "******", "name": "+++++++"}' localhost:5000/api/game/players
+
+PATCH
+curl -X PATCH -H "Content-Type: application/json" -d '{"uuid": "******", "name": "+++++++"}' localhost:5000/api/game/players
+
+PUT
+curl -X PUT -H "Content-Type: application/json" -d '{"uuid": "******", "name": "+++++++"}' localhost:5000/api/game/players
+
+DELETE
+curl -X DELETE -H "Content-Type: application/json" -d '{"uuid": "******", "name": "+++++++"}' localhost:5000/api/game/players
 ```

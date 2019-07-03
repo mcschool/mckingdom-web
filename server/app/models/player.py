@@ -1,8 +1,13 @@
+from datetime import datetime
 from sqlalchemy.schema import Column
-from sqlalchemy.types import Integer
+from sqlalchemy.types import Integer, String, DateTime
 from ._base import DeclarativeBase
 
 
 class Player(DeclarativeBase):
     __tablename__ = 'players'
     id = Column(Integer, primary_key=True)
+    uuid = Column(String(255))
+    name = Column(String(255))
+    created_at = Column(DateTime, default=datetime.now())
+    updated_at = Column(DateTime, default=datetime.now())
