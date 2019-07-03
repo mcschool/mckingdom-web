@@ -3,6 +3,6 @@ from flask import Blueprint
 app = Blueprint('game_player', __name__)
 
 
-@app.route("/")
+@app.route("/", methods=['GET'])
 def index():
-    return {"a": 1}
+    return "hello"

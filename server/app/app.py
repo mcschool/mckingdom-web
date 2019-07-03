@@ -3,8 +3,13 @@ from flask_cors import CORS
 from sqlalchemy.orm import sessionmaker
 from .db import get_database_engine
 
+from .api import game_player
+
 application = Flask(__name__)
+application.register_blueprint(game_player.app)
+
 CORS(application, send_wildcard=application.debug)
+
 
 
 @application.before_request
