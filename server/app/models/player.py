@@ -9,6 +9,8 @@ class Player(DeclarativeBase):
     id = Column(Integer, primary_key=True)
     uuid = Column(String(255))
     name = Column(String(255))
+    email = Column(String(255))
+    password = Column(String(255))
     login_count = Column(Integer, default=1)
     created_at = Column(DateTime, default=datetime.now())
     updated_at = Column(DateTime, default=datetime.now())
