@@ -1,4 +1,5 @@
-from flask import Blueprint
+from flask import Blueprint, g, request
+from ..models import Player
 
 app = Blueprint('game_player', __name__)
 
@@ -10,6 +11,12 @@ def get_players():
 
 @app.route("/api/game/players", methods=['PATCH'])
 def patch_players():
+    data = request.get_json()
+    if data['uuid'] is None:
+        print("error: no uuid")
+    else :
+        print("uuid: " + data['uuid'])
+        print("name: " + data['name'])
     return "bye bye"
 
 
@@ -33,6 +40,11 @@ def get_player(uuid=None):
     print("=============")
     print(uuid)
     print("=============")
+    if(uuid == "1234"):
+        print("ok")
+    else :
+        print("failed")
+
     return "GET: /api/game/players/<uuid>"
 
 
