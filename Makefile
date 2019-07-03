@@ -6,6 +6,11 @@ run_server:
 run_db:
 	docker-compose up db
 
+#
+run_web:
+	cd client/web && npm run dev
+
+
 # マイグレーション
 migrate:
 	cd server/app/db/migrates && PYTHONPATH=../../ python manage.py upgrade
