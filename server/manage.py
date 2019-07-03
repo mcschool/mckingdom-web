@@ -10,12 +10,6 @@ from migrate.versioning.shell import main as migrate_main
 manager = Manager(application)
 
 
-@manager
-def init():
-    engine = get_database_engine()
-    DeclarativeBase.metadata.create_all(bind=engine)
-
-
 @manager.command
 def migrate(argv):
     print(os.path.dirname(os.path.abspath(__file__)))

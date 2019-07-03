@@ -16,3 +16,13 @@ version INTEGER = 0
 $ make run_db
 $ make run_server
 ```
+
+
+### CURL
+```
+GET
+$ curl localhost:5000/api/admin/players
+
+POST
+$ curl -d "{uuid: '******', name:'+++++++'}" localhost:5000/api/game/players
+```
