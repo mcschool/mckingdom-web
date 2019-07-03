@@ -14,7 +14,7 @@ def patch_players():
     data = request.get_json()
     if data['uuid'] is None:
         print("error: no uuid")
-    else :
+    else:
         p = g.session.query(Player).filter(
             Player.uuid == data['uuid']
         ).first()
@@ -59,7 +59,7 @@ def get_player(uuid=None):
     print("=============")
     if(uuid == "1234"):
         print("ok")
-    else :
+    else:
         print("failed")
 
     return "GET: /api/game/players/<uuid>"
@@ -72,12 +72,24 @@ def patch_password(uuid=None):
     print("=============")
     return "GET: /api/game/players/<uuid>/password"
 
-
+# EMAIL変更
 @app.route("/api/game/players/<uuid>/email", methods=['PATCH'])
 def patch_email(uuid=None):
-    print("=============")
-    print(uuid + " change_email")
-    print("=============")
+    data = request.get_json()
+    if data['uuid'] is None:
+        print("error: no uuid")
+    else:
+        p = g.session.query(Player).filter(
+            Player.uuid == data['uuid']
+        ).first()
+        if p is None:
+            pass
+        else:
+            if p.email == data['email']:
+                pass
+            else:
+                p.email = p.email = data['email']
+                g.session.commit()
     return "GET: /api/game/players/<uuid>/email"
 
 
