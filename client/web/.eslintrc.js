@@ -19,6 +19,16 @@ module.exports = {
   ],
   // add your custom rules here
   rules: {
-    'nuxt/no-cjs-in-config': 'off'
+    'prettier/prettier': ["error", {
+      "semi": false,
+      'trailingComma': "es5"
+    }],
+    "vue/singleline-html-element-content-newline": 'off',
+    'vue/html-self-closing': 'off',
+    'vue/max-attributes-per-line': 'off',
+    'vue/attributes-order': 'off',
+    'vue/require-prop-types': 'off',
+    "no-irregular-whitespace": "off",
+    "no-console": "off",
   }
 }
