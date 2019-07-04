@@ -1,6 +1,6 @@
 <template>
   <div>
-    <PageHeader>My Dashboard</PageHeader>
+    <PageHeader>Settings</PageHeader>
     <div class="columns">
       <div class="column is-3">
         <Box class="summary-box">

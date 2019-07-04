@@ -3,11 +3,13 @@
     <div class="side--menu">
       <Sidebar />
     </div>
-    <div class="main--content">
+    <div class="main--container">
       <div class="g--nav">
         ナビ
       </div>
-      <nuxt />
+      <div class="main--content">
+        <nuxt />
+      </div>
     </div>
   </div>
 </template>
@@ -34,7 +36,7 @@ body {
     position: fixed;
     width: 240px;
   }
-  .main--content {
+  .main--container {
     padding-left: 250px;
     height: 200vh;
     padding-top: 50px;
@@ -45,6 +47,9 @@ body {
       width: 100%;
       border-bottom: solid 1px #333;
       padding: 10px;
+    }
+    .main--content {
+      padding: 10px 15px;
     }
   }
 }
