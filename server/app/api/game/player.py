@@ -15,11 +15,12 @@ def patch_players():
     if data['uuid'] is None:
         print("error: no uuid")
     else:
+        #データをGET
         p = g.session.query(Player).filter(
             Player.uuid == data['uuid']
         ).first()
         if p is None:
-            print("いないから登録")
+            print("いないから登録")#INSERT
             player = Player()
             player.uuid = data['uuid']
             player.name = data['name']
@@ -103,6 +104,7 @@ def patch_email(uuid=None):
         if p is None:
             pass
         else:
+            #データをUPDATE
             if p.email == data['email']:
                 pass
             else:
