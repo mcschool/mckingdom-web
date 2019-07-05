@@ -1,6 +1,7 @@
 from datetime import datetime
 from sqlalchemy.schema import Column
 from sqlalchemy.types import Integer, String, DateTime
+import json
 from ._base import DeclarativeBase
 
 
