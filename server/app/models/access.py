@@ -4,7 +4,7 @@ from sqlalchemy.types import Integer, String, DateTime
 from ._base import DeclarativeBase
 
 
-class Accesses(DeclarativeBase):
+class Access(DeclarativeBase):
     __tablename__ = 'accesses'
     id = Column(Integer, primary_key=True)
     uuid = Column(String(255))
