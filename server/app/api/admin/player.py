@@ -1,5 +1,5 @@
 from flask import Blueprint, g, request
-from ..models import Player
+from app.models import Player
 
 app = Blueprint('game_player', __name__)
 
