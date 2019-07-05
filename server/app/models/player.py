@@ -14,3 +14,6 @@ class Player(DeclarativeBase):
     login_count = Column(Integer, default=1)
     created_at = Column(DateTime, default=datetime.now())
     updated_at = Column(DateTime, default=datetime.now())
+
+    def as_dict(self):
+        return {c.name: getattr(self, c.name) for c in self.__table__.columns}

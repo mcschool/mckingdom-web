@@ -1,6 +1,7 @@
 from sqlalchemy.ext.declarative import declarative_base
 from ..db import get_database_engine
 
+
 class BaseModel:
     def _asdict(self):
         values = dict(
@@ -13,7 +14,9 @@ class BaseModel:
                 del values[k]
         return values
 
+
 DeclarativeBase = declarative_base(cls=BaseModel)
+
 
 def init():
     engine = get_database_engine()
