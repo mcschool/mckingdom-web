@@ -1,5 +1,5 @@
 import json
-from flask import Blueprint, g, request
+from flask import Blueprint, g, request, jsonify
 from app.models import Player
 
 app = Blueprint('admin_player', __name__)
@@ -8,7 +8,7 @@ app = Blueprint('admin_player', __name__)
 @app.route("/api/admin/players", methods=['GET'])
 def get_players():
     test = [1, 2]
-    return json.dumps(test)
+    return jsonify(json.dumps(test))
 
 
 @app.route("/api/admin/players/test", methods=['GET'])
@@ -16,8 +16,8 @@ def get_players_test():
     p = g.session.query(Player).filter(
         Player.id == 1
     ).first()
-    print(p.as_dict())
-    return json.dumps(p.as_dict())
+    response = json.dumps(p.as_dict())
+    return jsonify(response)
 
 
 @app.route("/api/admin/players", methods=['PATCH'])
