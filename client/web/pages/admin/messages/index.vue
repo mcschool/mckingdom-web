@@ -4,7 +4,7 @@
     <div class="columns">
       <div class="column is-3">
         <Box class="summary-box">
-          <div>メッセージを追加する</div>
+          <div><nuxt-link :to="{ path: './messages/new' }">メッセージを追加する</nuxt-link></div>
         </Box>
       </div>
     </div>

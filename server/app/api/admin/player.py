@@ -7,8 +7,8 @@ app = Blueprint('admin_player', __name__)
 
 @app.route("/api/admin/players", methods=['GET'])
 def get_players():
-    test = [1, 2]
-    return jsonify(json.dumps(test))
+    test = {"a": 1}
+    return jsonify(test)
 
 
 @app.route("/api/admin/players/test", methods=['GET'])

@@ -29,6 +29,12 @@ body {
   height: 100vh;
   color: #a4a8ae;
 }
+a {
+  color: #a4a8ae;
+}
+a:hover {
+  color: #b4b8be;
+}
 </style>
 <style lang="scss" scoped>
 .admin--wrapper {
