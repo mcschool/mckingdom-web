@@ -1,12 +1,18 @@
-from flask import Flask, session, g, request
+from flask import Flask, g
 from flask_cors import CORS
 from sqlalchemy.orm import sessionmaker
 from .db import get_database_engine
 
-from .api import game_player
+from app.api.game import player as game_player
+from app.api.admin import player as admin_player
 
 application = Flask(__name__)
-application.register_blueprint(game_player.app)
+apps = [
+    game_player.app,
+    admin_player.app
+]
+for app in apps:
+    application.register_blueprint(app)
 
 CORS(application, send_wildcard=application.debug)
 
