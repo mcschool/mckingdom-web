@@ -7,7 +7,7 @@ table = Table(
     Column('id', BigInteger, primary_key=True, nullable=False),
     Column('world', String(255), nullable=False),
     Column('message', Text),
-    Column('update_at', DateTime),
+    Column('updated_at', DateTime),
     Column('created_at', DateTime),
 )
 

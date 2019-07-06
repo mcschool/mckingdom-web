@@ -15,7 +15,7 @@ run_web:
 migrate:
 	cd server/app/db/migrates && PYTHONPATH=../../ python manage.py upgrade
 migrate_down:
-	cd server/app/db/migrates && PYTHONPATH=../../ python manage.py downgrade 0
+	cd server/app/db/migrates && PYTHONPATH=../../ python manage.py downgrade 2
 
 
 
