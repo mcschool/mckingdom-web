@@ -44,17 +44,16 @@ def put_messages_id(id = None):
     data = request.get_json()
     if data['message'] is None:
         print("error: no message")
-    else:
-        if data['world'] is None:
+    elif data['world'] is None:
             print("error: no world")
-        else:
-            message = g.session.query(Message).filter(
-                Message.id == id
-            ).first()
-            message.message = data['message']
-            message.world = data['world']
-            g.session.add(message)
-            g.session.commit()
+    else:
+        message = g.session.query(Message).filter(
+            Message.id == id
+        ).first()
+        message.message = data['message']
+        message.world = data['world']
+        g.session.add(message)
+        g.session.commit()
     return "hello put messages id"
 
 
