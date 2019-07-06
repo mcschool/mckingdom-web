@@ -42,16 +42,19 @@ def post_messages():
 @app.route("/api/admin/messages/<id>", methods=['PUT'])
 def put_messages_id(id = None):
     data = request.get_json()
-    if data['world'] is None:
-        print("error: no world")
+    if data['message'] is None:
+        print("error: no message")
     else:
-        messages = g.session.query(Message).filter(
-            Message.id == id
-        ).first()
-        messages.message = data['message']
-        messages.world = data['world']
-        g.session.add(messages)
-        g.session.commit()
+        if data['world'] is None:
+            print("error: no world")
+        else:
+            message = g.session.query(Message).filter(
+                Message.id == id
+            ).first()
+            message.message = data['message']
+            message.world = data['world']
+            g.session.add(message)
+            g.session.commit()
     return "hello put messages id"
 
 
