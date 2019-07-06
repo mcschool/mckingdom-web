@@ -4,14 +4,15 @@ from sqlalchemy.orm import sessionmaker
 from .db import get_database_engine
 
 from app.api.game import player as game_player, access as game_access
-from app.api.admin import player as admin_player, access as admin_access
+from app.api.admin import player as admin_player, access as admin_access, message as admin_message
 
 application = Flask(__name__)
 apps = [
     game_player.app,
     game_access.app,
     admin_player.app,
-    admin_access.app
+    admin_access.app,
+    admin_message.app
 ]
 for app in apps:
     application.register_blueprint(app)
