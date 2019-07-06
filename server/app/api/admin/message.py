@@ -45,7 +45,7 @@ def put_messages_id(id = None):
     if data['message'] is None:
         print("error: no message")
     elif data['world'] is None:
-            print("error: no world")
+        print("error: no world")
     else:
         message = g.session.query(Message).filter(
             Message.id == id
