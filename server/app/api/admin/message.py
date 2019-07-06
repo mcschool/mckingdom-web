@@ -26,7 +26,6 @@ def get_messages_id(id = None):
 @app.route("/api/admin/messages", methods=['POST'])
 def post_messages():
     data = request.get_json()
-    messages = g.session.query(Message).all()
     if data['world'] is None:
         print("error: no world")
     else:
