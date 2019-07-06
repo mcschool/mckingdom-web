@@ -39,11 +39,31 @@ def post_messages():
     return "hello post messages"
 
 
-@app.route("/api/admin/messages/:id", methods=['PUT'])
-def put_messages_id():
+@app.route("/api/admin/messages/<id>", methods=['PUT'])
+def put_messages_id(id = None):
+    data = request.get_json()
+    if data['message'] is None:
+        print("error: no message")
+    elif data['world'] is None:
+        print("error: no world")
+    else:
+        message = g.session.query(Message).filter(
+            Message.id == id
+        ).first()
+        message.message = data['message']
+        message.world = data['world']
+        g.session.add(message)
+        g.session.commit()
     return "hello put messages id"
 
 
-@app.route("/api/admin/messages/:id", methods=['DELETE'])
-def delete_messages_id():
+@app.route("/api/admin/messages/<id>", methods=['DELETE'])
+def delete_messages_id(id = None):
+    if id.isdecimal():
+        message = g.session.query(Message).filter(
+            Message.id == id
+        ).delete()
+        g.session.commit()
+    else:
+        print("error: id not reliable")
     return "hello delete messages id"
