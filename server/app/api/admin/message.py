@@ -39,11 +39,26 @@ def post_messages():
     return "hello post messages"
 
 
-@app.route("/api/admin/messages/:id", methods=['PUT'])
-def put_messages_id():
+@app.route("/api/admin/messages/<id>", methods=['PUT'])
+def put_messages_id(id = None):
+    data = request.get_json()
+    if data['world'] is None:
+        print("error: no world")
+    else:
+        messages = g.session.query(Message).filter(
+            Message.id == id
+        ).first()
+        messages.message = data['message']
+        messages.world = data['world']
+        g.session.add(messages)
+        g.session.commit()
     return "hello put messages id"
 
 
-@app.route("/api/admin/messages/:id", methods=['DELETE'])
-def delete_messages_id():
+@app.route("/api/admin/messages/<id>", methods=['DELETE'])
+def delete_messages_id(id = None):
+    message = g.session.query(Message).filter(
+        Message.id == id
+    ).delete()
+    g.session.commit()
     return "hello delete messages id"
