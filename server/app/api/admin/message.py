@@ -59,8 +59,11 @@ def put_messages_id(id = None):
 
 @app.route("/api/admin/messages/<id>", methods=['DELETE'])
 def delete_messages_id(id = None):
-    message = g.session.query(Message).filter(
-        Message.id == id
-    ).delete()
-    g.session.commit()
+    if id.isdecimal():
+        message = g.session.query(Message).filter(
+            Message.id == id
+        ).delete()
+        g.session.commit()
+    else:
+        print("error: id not reliable")
     return "hello delete messages id"
