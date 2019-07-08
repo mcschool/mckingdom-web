@@ -11,6 +11,10 @@ def post_athletic_courses():
     data = request.get_json()
     if data['name'] is None:
         return "error: no world"
+    if data['course_no'] is None:
+        return "error: no course_no"
+    if data['difficulty'] is None:
+        return "error: no difficulty"
     athletic = AthleticCourse()
     athletic.course_no = data['course_no']
     athletic.name = data['name']
