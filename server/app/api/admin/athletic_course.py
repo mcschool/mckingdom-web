@@ -18,9 +18,6 @@ def post_athletic_courses():
     athletic.difficulty = data['difficulty']
     g.session.add(athletic)
     g.session.commit()
-    print("=====")
-    print(data['difficulty'])
-    print("=====")
     return "success"
 
 
