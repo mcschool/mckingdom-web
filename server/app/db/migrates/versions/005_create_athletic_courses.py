@@ -5,6 +5,7 @@ meta = MetaData()
 table = Table(
     'athletic_courses', meta,
     Column('id', BigInteger, primary_key=True, nullable=False),
+    Column('course_no', Integer),
     Column('name', String(255)),
     Column('description', Text),
     Column('difficulty', Integer),
