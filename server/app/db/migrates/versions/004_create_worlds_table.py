@@ -7,6 +7,8 @@ table = Table(
     Column('id', BigInteger, primary_key=True, nullable=False),
     Column('name', String(255), nullable=False),
     Column('login_count', Integer),
+    Column('updated_at', DateTime),
+    Column('created_at', DateTime),
 )
 
 
