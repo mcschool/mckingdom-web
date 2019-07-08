@@ -13,13 +13,13 @@ def post_world():
         print("error: no world")
     else:
         if data.get('login_count') is None:
-            print("error: no login_count")
-        else:
-            world = World()
-            world.name = data['name']
-            world.login_count = data['login_count']
-            g.session.add(world)
-            g.session.commit()
+            return "error: no login_count"
+
+        world = World()
+        world.name = data['name']
+        world.login_count = data['login_count']
+        g.session.add(world)
+        g.session.commit()
     return"hello post world"
 
 
