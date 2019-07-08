@@ -6,6 +6,8 @@ table = Table(
     'athletic_courses', meta,
     Column('id', BigInteger, primary_key=True, nullable=False),
     Column('name', String(255)),
+    Column('description', Text),
+    Column('difficulty', Integer),
     Column('updated_at', DateTime),
     Column('created_at', DateTime),
 )
