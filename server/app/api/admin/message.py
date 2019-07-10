@@ -14,6 +14,7 @@ def get_messages():
         response.append(message.as_dict())
     return jsonify(response)
 
+
 @app.route("/api/admin/messages/<id>", methods=['GET'])
 def get_messages_id(id = None):
     message = g.session.query(Message).filter(
