@@ -12,6 +12,7 @@ class Player(DeclarativeBase):
     email = Column(String(255))
     password = Column(String(255))
     login_count = Column(Integer, default=1)
+    last_login_at = Column(DateTime, default=datetime.now())
     created_at = Column(DateTime, default=datetime.now())
     updated_at = Column(DateTime, default=datetime.now())
 
