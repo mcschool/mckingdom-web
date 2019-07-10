@@ -1,5 +1,6 @@
 from flask import Blueprint, g, request
 from app.models import Player
+from datetime import datetime
 
 app = Blueprint('game_player', __name__)
 
@@ -28,6 +29,7 @@ def patch_players():
             g.session.commit()
         else:
             p.login_count = p.login_count + 1
+            p.last_login_at = datetime.now()
             g.session.commit()
             if p.name == data['name']:
                 pass
@@ -35,7 +37,34 @@ def patch_players():
                 p.name = p.name = data['name']
                 g.session.commit()
 
-    return "bye bye"
+    return "success"
+
+
+"""
+@app.route("/api/game/players/last_login", methods=['PATCH'])
+def patch_player_last_login():
+    data = request.get_json()
+    print(data['uuid'])
+    if data['uuid']is None:
+        return "error: no uuid"
+    player = g.session.query(Player).filter(
+        Player.uuid == data['uuid']
+    ).first()
+    print(player)
+    if player is None:
+        p = Player()
+        p.uuid = data['uuid']
+        p.name = data['name']
+        p.created_at = datetime.now()
+        p.update_at = datetime.now()
+        p.last_login_at = datetime.now()
+        g.session.add(p)
+        g.session.commit()
+    else:
+        player.last_login_at = datetime.now()
+        g.session.commit()
+    return "success"
+"""
 
 
 @app.route("/api/game/players", methods=['POST'])
