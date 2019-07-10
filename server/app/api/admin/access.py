@@ -4,6 +4,7 @@ from ...models.access import Access
 
 app = Blueprint('admin_access', __name__)
 
+
 @app.route("/api/admin/access/game", methods=['GET'])
 def get_accesses():
     accesses = g.session.query(Access).all()
