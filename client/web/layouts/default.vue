@@ -16,6 +16,11 @@ html {
   box-sizing: border-box;
 }
 
+html,
+body {
+  background: #fff;
+}
+
 *,
 *:before,
 *:after {
