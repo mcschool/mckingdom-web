@@ -6,7 +6,7 @@ run_server:
 run_db:
 	docker-compose up db
 
-#
+# ホームページ起動
 run_web:
 	cd client/web && npm run dev
 
