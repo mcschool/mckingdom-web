@@ -19,56 +19,6 @@
         <li>
           <nuxt-link :to="{ path: '/admin/settings' }">Settings</nuxt-link>
         </li>
-        <li><a>Worlds</a></li>
-        <li><a>Server</a></li>
-        <li><a>Settings</a></li>
-        <li><a>1. menu</a></li>
-        <li><a>1. menu</a></li>
-        <li><a>1. menu</a></li>
-        <li><a>1. menu</a></li>
-        <li><a>1. menu</a></li>
-        <li><a>1. menu</a></li>
-        <li><a>1. menu</a></li>
-        <li><a>1. menu</a></li>
-        <li><a>1. menu</a></li>
-        <li><a>1. menu</a></li>
-        <li><a>1. menu</a></li>
-        <li><a>1. menu</a></li>
-        <li><a>1. menu</a></li>
-        <li><a>1. menu</a></li>
-        <li><a>1. menu</a></li>
-        <li><a>1. menu</a></li>
-        <li><a>2. menu</a></li>
-        <li><a>2. menu</a></li>
-        <li><a>2. menu</a></li>
-        <li><a>2. menu</a></li>
-        <li><a>2. menu</a></li>
-        <li><a>2. menu</a></li>
-        <li><a>2. menu</a></li>
-        <li><a>2. menu</a></li>
-        <li><a>2. menu</a></li>
-        <li><a>2. menu</a></li>
-        <li><a>2. menu</a></li>
-        <li><a>2. menu</a></li>
-        <li><a>2. menu</a></li>
-        <li><a>2. menu</a></li>
-        <li><a>2. menu</a></li>
-        <li><a>2. menu</a></li>
-        <li><a>2. menu</a></li>
-        <li><a>2. menu</a></li>
-        <li><a>2. menu</a></li>
-        <li><a>2. menu</a></li>
-        <li><a>2. menu</a></li>
-        <li><a>2. menu</a></li>
-        <li><a>2. menu</a></li>
-        <li><a>2. menu</a></li>
-        <li><a>2. menu</a></li>
-        <li><a>2. menu</a></li>
-        <li><a>2. menu</a></li>
-        <li><a>2. menu</a></li>
-        <li><a>2. menu</a></li>
-        <li><a>2. menu</a></li>
-        <li><a>2. menu</a></li>
       </ul>
     </div>
   </div>
