@@ -3,16 +3,24 @@ from flask_cors import CORS
 from sqlalchemy.orm import sessionmaker
 from .db import get_database_engine
 
+import app.api.health as health
 from app.api.game import (
     player as game_player,
     access as game_access,
     world as game_world,
     athletic_completed_players as game_athletic_completed_players
 )
-from app.api.admin import player as admin_player, access as admin_access, message as admin_message, world as admin_world, athletic_course as admin_athletic_course
+from app.api.admin import (
+    player as admin_player,
+    access as admin_access,
+    message as admin_message,
+    world as admin_world,
+    athletic_course as admin_athletic_course
+)
 
 application = Flask(__name__)
 apps = [
+    health.app,
     game_player.app,
     game_access.app,
     admin_player.app,
