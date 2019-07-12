@@ -87,9 +87,9 @@ export default {
     closeAddModal() {
       this.addModal.isOpen = false
     },
-    createCourse() {
+    async createCourse() {
       try {
-        const data = this.$axios.post("http://localhost:5000/api/admin/athletic_courses", {
+        const data = await this.$axios.post("http://localhost:5000/api/admin/athletic_courses", {
           name: this.newCourse.name,
           description: this.newCourse.description,
           course_no: this.newCourse.courseNo,
