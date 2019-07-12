@@ -26,7 +26,7 @@ apps = [
 for app in apps:
     application.register_blueprint(app)
 
-CORS(application, send_wildcard=application.debug)
+CORS(application)
 
 
 

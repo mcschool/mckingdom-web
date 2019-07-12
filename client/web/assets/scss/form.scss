@@ -1,5 +1,13 @@
-.input {
-  background: transparent;
-  border: solid 1px #888;
-  color: #fff;
+.admin {
+  .input,
+  .textarea,
+  .select select {
+    background: transparent;
+    border: solid 1px #888;
+    color: #a5a8ad;
+    border-radius: 0;
+  }
+  .select:not(.is-multiple):not(.is-loading)::after {
+    border-color: #a5a8ad;
+  }
 }

@@ -11,6 +11,12 @@
           <nuxt-link :to="{ path: '/admin/players' }">Players</nuxt-link>
         </li>
         <li>
+          <div>Games</div>
+          <ul>
+            <li><nuxt-link :to="{ path: '/admin/games/athletic' }">アスレ</nuxt-link></li>
+          </ul>
+        </li>
+        <li>
           <nuxt-link :to="{ path: '/admin/login/histories' }">LoginHistory</nuxt-link>
         </li>
         <li>
