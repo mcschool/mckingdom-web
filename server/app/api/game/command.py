@@ -12,13 +12,15 @@ def put_command_password():
         return "error: no uuid"
     if data.get('password') is None:
         return "error: no password"
-    if len(data.get('password')) > 4:
-        if len(data.get('password')) < 32:
-            player = g.session.query(Player).filter(
-                Player.uuid == data.get('uuid')
-            ).first()
-            player.password = data.get('password')
-            g.session.commit()
+    if len(data.get('password')) < 4:
+        return "error: pass too short"
+    if len(data.get('password')) > 32:
+        return "error: pass too long"
+    player = g.session.query(Player).filter(
+        Player.uuid == data.get('uuid')
+    ).first()
+    player.password = data.get('password')
+    g.session.commit()
     return "success"
 
 
@@ -29,13 +31,15 @@ def put_command_email():
         return "error: no uuid"
     if data.get('email') is None:
         return "error: no email"
-    if len(data.get('email')) >= 10:
-        if len(data.get('email')) <= 240:
-            if '@' in data.get('email'):
-                player = g.session.query(Player).filter(
-                    Player.uuid == data.get('uuid')
-                ).first()
-                player.email = data.get('email')
-            else:
-                return "error: no @ mark"
+    if len(data.get('email')) <= 10:
+        return "error: email too short"
+    if len(data.get('email')) >= 240:
+        return "error: email too long"
+    if '@' in data.get('email'):
+            player = g.session.query(Player).filter(
+                Player.uuid == data.get('uuid')
+            ).first()
+            player.email = data.get('email')
+    else:
+        return "error: no @ mark"
     return "success"
