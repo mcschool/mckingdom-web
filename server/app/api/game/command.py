@@ -32,18 +32,11 @@ def put_command_email():
     print(data.get('email'))
     if len(data.get('email')) >= 10:
         if len(data.get('email')) <= 240:
-            print("=====")
-            print(data.get('email'))
             if '@' in data.get('email'):
-                print("=====")
-                print("in @ mark if")
                 player = g.session.query(Player).filter(
                     Player.uuid == data.get('uuid')
                 ).first()
                 player.email = data.get('email')
-                g.session.commit()
-                print("=====")
-                print("end of if")
             else:
                 return "error: no @ mark"
     return "success"
