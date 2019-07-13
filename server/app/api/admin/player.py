@@ -57,9 +57,6 @@ def post_players():
 @app.route("/api/admin/players/<id>/role", methods=['PUT'])
 def put_player_role(id=None):
     data = request. get_json()
-    role = data.get("role")
-    print("----------------")
-    print(role)
     p = g.session.query(Player).filter(Player.id == id).first()
     if p is None:
         return "not found"
@@ -67,4 +64,4 @@ def put_player_role(id=None):
        p.role = role
        p.updated_at = datetime.now()
        g.session.commit()
-    return "hello111"
+    return "success"
