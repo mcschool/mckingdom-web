@@ -64,3 +64,12 @@ def delete_athletic_courses(id = None):
     else:
         return "error: no id"
     return"successfully deleted"
+
+
+@app.route("/api/admin/athletic_courses", methods=['GET'])
+def get_athletic_courses_all():
+    course = g.session.query(AthleticCourse).all()
+    response = []
+    for course in course:
+        response.append(course.as_dict())
+    return jsonify(response)
