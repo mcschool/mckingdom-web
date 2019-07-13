@@ -1,4 +1,5 @@
 import json
+from datetime import datetime
 from flask import Blueprint, g, request, jsonify
 from app.models import Player
 
@@ -51,3 +52,16 @@ def patch_players():
 @app.route("/api/admin/players", methods=['POST'])
 def post_players():
     return "yo"
+
+
+@app.route("/api/admin/players/<id>/role", methods=['PUT'])
+def put_player_role(id=None):
+    data = request. get_json()
+    p = g.session.query(Player).filter(Player.id == id).first()
+    if p is None:
+        return "not found"
+    else:
+       p.role = role
+       p.updated_at = datetime.now()
+       g.session.commit()
+    return "success"
