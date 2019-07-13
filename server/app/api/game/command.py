@@ -29,7 +29,6 @@ def put_command_email():
         return "error: no uuid"
     if data.get('email') is None:
         return "error: no email"
-    print(data.get('email'))
     if len(data.get('email')) >= 10:
         if len(data.get('email')) <= 240:
             if '@' in data.get('email'):
