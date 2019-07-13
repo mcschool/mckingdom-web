@@ -69,8 +69,6 @@ def put_player_role(id=None):
 @app.route("/api/admin/players/admin", methods=['GET'])
 def get_player_admin():
     players = g.session.query(Player).filter(Player.role == "admin").all()
-    print("---------------")
-    print(players)
     response = []
     for player in players:
         response.append(player.as_dict())
