@@ -65,3 +65,13 @@ def put_player_role(id=None):
        p.updated_at = datetime.now()
        g.session.commit()
     return "success"
+
+@app.route("/api/admin/players/admin", methods=['GET'])
+def get_player_admin():
+    players = g.session.query(Player).filter(Player.role == "admin").all()
+    print("---------------")
+    print(players)
+    response = []
+    for player in players:
+        response.append(player.as_dict())
+    return jsonify(response)
