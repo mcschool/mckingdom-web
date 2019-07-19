@@ -8,23 +8,22 @@
           <nuxt-link :to="{ path: '/admin' }">Dashboard</nuxt-link>
         </li>
         <li>
-          <nuxt-link :to="{ path: '/admin/players' }">Players</nuxt-link>
+          <nuxt-link :to="{ path: '/admin/players' }">プレーヤー</nuxt-link>
         </li>
         <li>
-          <div>Games</div>
-          <ul>
-            <li><nuxt-link :to="{ path: '/admin/games/athletic' }">アスレ</nuxt-link></li>
-          </ul>
+          <nuxt-link :to="{ path: '/admin/login/histories' }">ログイン履歴</nuxt-link>
         </li>
         <li>
-          <nuxt-link :to="{ path: '/admin/login/histories' }">LoginHistory</nuxt-link>
+          <nuxt-link :to="{ path: '/admin/messages' }">メッセージ</nuxt-link>
         </li>
         <li>
-          <nuxt-link :to="{ path: '/admin/messages' }">Messages</nuxt-link>
+          <nuxt-link :to="{ path: '/admin/settings' }">設定</nuxt-link>
         </li>
-        <li>
-          <nuxt-link :to="{ path: '/admin/settings' }">Settings</nuxt-link>
-        </li>
+      </ul>
+      <h3>Games</h3>
+      <ul>
+        <li><nuxt-link :to="{ path: '/admin/games/athletic' }">アスレ</nuxt-link></li>
+        <li><nuxt-link :to="{ path: '/admin/games/pvp' }">PVP</nuxt-link></li>
       </ul>
     </div>
   </div>
@@ -53,6 +52,7 @@ export default {}
       color: rgba(255, 255, 255, 0.4);
     }
     ul {
+      margin-bottom: 10px;
       li {
         a {
           position: relative;

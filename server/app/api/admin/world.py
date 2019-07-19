@@ -51,8 +51,11 @@ def put_world_id(id = None):
     world = g.session.query(World).filter(
         World.id == id
     ).first()
-    world.name = data['name']
+    world.name = data.get('name')
+    world.description = data.get('description')
+    world.image_path = data.get('image_path')
     world.updated_at = datetime.now()
     g.session.add(world)
     g.session.commit()
     return "success"
+
