@@ -12,6 +12,8 @@ class World(DeclarativeBase):
     login_count = Column(Integer)
     updated_at = Column(DateTime, default=datetime.now())
     created_at = Column(DateTime, default=datetime.now())
+    description = Column(String(255))
+    image_path = Column(String(255))
 
 
     def as_dict(self):

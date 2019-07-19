@@ -8,7 +8,8 @@ from app.api.game import (
     player as game_player,
     access as game_access,
     world as game_world,
-    athletic_completed_players as game_athletic_completed_players
+    athletic_completed_players as game_athletic_completed_players,
+    command as game_command,
 )
 from app.api.admin import (
     player as admin_player,
@@ -33,7 +34,8 @@ apps = [
     game_world.app,
     admin_athletic_course.app,
     game_athletic_completed_players.app,
-    server_player.app
+    server_player.app,
+    game_command.app,
 ]
 for app in apps:
     application.register_blueprint(app)

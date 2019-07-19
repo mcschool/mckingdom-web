@@ -1,7 +1,8 @@
 import json
-from datetime import datetime
+from datetime import datetime, timedelta
 from flask import Blueprint, g, request, jsonify
 from app.models import Player
+from sqlalchemy import desc
 
 app = Blueprint('admin_player', __name__)
 
@@ -61,10 +62,11 @@ def put_player_role(id=None):
     if p is None:
         return "not found"
     else:
-       p.role = role
+       p.role = data.get("role")
        p.updated_at = datetime.now()
        g.session.commit()
     return "success"
+
 
 @app.route("/api/admin/players/admin", methods=['GET'])
 def get_player_admin():
@@ -73,3 +75,38 @@ def get_player_admin():
     for player in players:
         response.append(player.as_dict())
     return jsonify(response)
+
+
+@app.route("/api/admin/players/loginInfo", methods=['GET'])
+def get_player_loginInfo():
+    week = datetime.now() - timedelta(days = 7)
+    month = datetime.now() - timedelta(days = 30)
+    thisWeek = g.session.query(Player).filter(
+        Player.last_login_at > week
+    ).count()
+    thisMonth = g.session.query(Player).filter(
+        Player.last_login_at > month
+    ).count()
+    thisAll = g.session.query(Player).filter().count()
+    thisBounceBack = g.session.query(Player).filter(
+        Player.login_count == 1
+    ).count()
+    data = {
+        "thisWeek": thisWeek,
+        "thisMonth": thisMonth,
+        "all": thisAll,
+        "bounceBack": thisBounceBack
+    }
+    return jsonify(data)
+
+
+@app.route("/api/admin/pvp/kill/total/rank", methods=['GET'])
+def get_player_pvp_kill_rank():
+    order_kills = g.session.query(Player).order_by(
+        desc(Player.pvp_total_kills)
+    ).all()
+    print("=====")
+    for player in order_kills:
+        print(player.name, player.pvp_total_kills)
+    print("=====")
+    return "success"
