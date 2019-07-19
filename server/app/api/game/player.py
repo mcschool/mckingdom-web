@@ -1,6 +1,7 @@
 from flask import Blueprint, g, request
 from app.models import Player
 from datetime import datetime
+from sqlalchemy import desc
 
 app = Blueprint('game_player', __name__)
 
@@ -115,4 +116,16 @@ def put_player_kill():
         player.pvp_max_kill_streaks = data.get('kill_streak')
     g.session.add(player)
     g.session.commit()
+    return "success"
+
+
+@app.route("/api/game/pvp/kill/total/rank", methods=['GET'])
+def get_player_pvp_kill_rank():
+    order_kills = g.session.query(Player).order_by(
+        desc(Player.pvp_total_kills)
+    ).all()
+    print("=====")
+    for player in order_kills:
+        print(player.name, player.pvp_total_kills)
+    print("=====")
     return "success"

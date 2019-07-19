@@ -2,6 +2,7 @@ import json
 from datetime import datetime
 from flask import Blueprint, g, request, jsonify
 from app.models import Player
+from sqlalchemy import desc
 
 app = Blueprint('admin_player', __name__)
 
@@ -74,3 +75,16 @@ def get_player_admin():
     for player in players:
         response.append(player.as_dict())
     return jsonify(response)
+
+
+@app.route("/api/admin/pvp/kill/total/rank", methods=['GET'])
+def get_player_pvp_kill_rank():
+    order_kills = g.session.query(Player).order_by(
+        desc(Player.pvp_total_kills)
+    ).all()
+    print("=====")
+    for player in order_kills:
+        print(player.name, player.pvp_total_kills)
+    print("=====")
+    return "success"
+
