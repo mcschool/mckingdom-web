@@ -1,5 +1,5 @@
 import json
-from datetime import datetime
+from datetime import datetime, timedelta
 from flask import Blueprint, g, request, jsonify
 from app.models import Player
 
@@ -66,6 +66,7 @@ def put_player_role(id=None):
        g.session.commit()
     return "success"
 
+
 @app.route("/api/admin/players/admin", methods=['GET'])
 def get_player_admin():
     players = g.session.query(Player).filter(Player.role == "admin").all()
@@ -73,3 +74,26 @@ def get_player_admin():
     for player in players:
         response.append(player.as_dict())
     return jsonify(response)
+
+
+@app.route("/api/admin/players/loginInfo", methods=['GET'])
+def get_player_loginInfo():
+    week = datetime.now() - timedelta(days = 7)
+    month = datetime.now() - timedelta(days = 30)
+    thisWeek = g.session.query(Player).filter(
+        Player.last_login_at > week
+    ).count()
+    thisMonth = g.session.query(Player).filter(
+        Player.last_login_at > month
+    ).count()
+    thisAll = g.session.query(Player).filter().count()
+    thisBounceBack = g.session.query(Player).filter(
+        Player.login_count == 1
+    ).count()
+    data = {
+        "thisWeek": thisWeek,
+        "thisMonth": thisMonth,
+        "all": thisAll,
+        "bounceBack": thisBounceBack
+    }
+    return jsonify(data)
