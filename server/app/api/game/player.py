@@ -4,12 +4,6 @@ from datetime import datetime
 
 app = Blueprint('game_player', __name__)
 
-
-@app.route("/api/game/players", methods=['GET'])
-def get_players():
-    return "hello"
-
-
 @app.route("/api/game/players", methods=['PATCH'])
 def patch_players():
     data = request.get_json()
@@ -38,48 +32,6 @@ def patch_players():
                 g.session.commit()
 
     return "success"
-
-
-"""
-@app.route("/api/game/players/last_login", methods=['PATCH'])
-def patch_player_last_login():
-    data = request.get_json()
-    print(data['uuid'])
-    if data['uuid']is None:
-        return "error: no uuid"
-    player = g.session.query(Player).filter(
-        Player.uuid == data['uuid']
-    ).first()
-    print(player)
-    if player is None:
-        p = Player()
-        p.uuid = data['uuid']
-        p.name = data['name']
-        p.created_at = datetime.now()
-        p.update_at = datetime.now()
-        p.last_login_at = datetime.now()
-        g.session.add(p)
-        g.session.commit()
-    else:
-        player.last_login_at = datetime.now()
-        g.session.commit()
-    return "success"
-"""
-
-
-@app.route("/api/game/players", methods=['POST'])
-def post_players():
-    return "yo"
-
-
-@app.route("/api/game/players", methods=['PUT'])
-def put_players():
-    return "no"
-
-
-@app.route("/api/game/players", methods=['DELETE'])
-def delete_players():
-    return "yes"
 
 
 @app.route("/api/game/players/<uuid>", methods=['GET'])
@@ -148,3 +100,19 @@ def delete_player(uuid=None):
     print(uuid + " delete_player")
     print("=============")
     return "GET: /api/game/players/<uuid>"
+
+
+@app.route("/api/game/pvp/kill", methods=['PUT'])
+def put_player_kill():
+    data = request.get_json()
+    if data.get('uuid') is None:
+        return "error: no uuid"
+    player = g.session.query(Player).filter(
+        data.get('uuid') == Player.uuid
+    ).first()
+    player.pvp_total_kills = player.pvp_total_kills + 1
+    if player.pvp_max_kill_streaks < data.get('kill_streak'):
+        player.pvp_max_kill_streaks = data.get('kill_streak')
+    g.session.add(player)
+    g.session.commit()
+    return "success"

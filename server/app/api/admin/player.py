@@ -66,6 +66,7 @@ def put_player_role(id=None):
        g.session.commit()
     return "success"
 
+
 @app.route("/api/admin/players/admin", methods=['GET'])
 def get_player_admin():
     players = g.session.query(Player).filter(Player.role == "admin").all()

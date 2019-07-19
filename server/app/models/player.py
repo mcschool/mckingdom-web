@@ -15,6 +15,8 @@ class Player(DeclarativeBase):
     last_login_at = Column(DateTime, default=datetime.now())
     created_at = Column(DateTime, default=datetime.now())
     updated_at = Column(DateTime, default=datetime.now())
+    pvp_max_kill_streaks = Column(Integer, default=0)
+    pvp_total_kills = Column(Integer, default=0)
     role = Column(String(32))
 
     def as_dict(self):
