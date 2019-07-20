@@ -19,15 +19,12 @@ export default {
   components: { Sidebar },
 }
 </script>
-<style>
-html {
+<style lang="scss">
+.admin--wrapper {
   height: 100%;
   background: #212529;
-}
-body {
-  background: #212529;
-  height: 100vh;
   color: #a4a8ae;
+  height: 100vh;
 }
 a {
   color: #a4a8ae;
@@ -35,8 +32,6 @@ a {
 a:hover {
   color: #b4b8be;
 }
-</style>
-<style lang="scss" scoped>
 .admin--wrapper {
   .side--menu {
     position: fixed;

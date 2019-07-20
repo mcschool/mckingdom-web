@@ -12,12 +12,11 @@ def post_world():
     if data.get('name') is None:
         print("error: no world")
     else:
-        if data.get('login_count') is None:
-            return "error: no login_count"
-
         world = World()
-        world.name = data['name']
-        world.login_count = data['login_count']
+        world.name = data.get('name')
+        world.description = data.get('description')
+        world.image_path = data.get('image_path')
+        world.login_count = 0
         g.session.add(world)
         g.session.commit()
     return"hello post world"
@@ -26,10 +25,13 @@ def post_world():
 @app.route("/api/admin/worlds", methods=['GET'])
 def get_world():
     worlds = g.session.query(World).all()
-    response = []
+    worlds_data = []
     for world in worlds:
-        response.append(world.as_dict())
-    return jsonify(response)
+        worlds_data.append(world.as_dict())
+    res = {
+        "worlds": worlds_data
+    }
+    return jsonify(res)
 
 
 @app.route("/api/admin/worlds/<id>", methods=['GET'])
@@ -39,8 +41,10 @@ def get_world_id(id = None):
     ).first()
     if world is None:
         return "error: no world_id"
-    response = world.as_dict()
-    return jsonify(response)
+    res = {
+        "world": world.as_dict(),
+    }
+    return jsonify(res)
 
 
 @app.route("/api/admin/worlds/<id>", methods=['PUT'])

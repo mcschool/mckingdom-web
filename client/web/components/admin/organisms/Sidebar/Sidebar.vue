@@ -4,21 +4,13 @@
     <div class="menu">
       <h3>Main</h3>
       <ul>
-        <li>
-          <nuxt-link :to="{ path: '/admin' }">Dashboard</nuxt-link>
-        </li>
-        <li>
-          <nuxt-link :to="{ path: '/admin/players' }">プレーヤー</nuxt-link>
-        </li>
-        <li>
-          <nuxt-link :to="{ path: '/admin/login/histories' }">ログイン履歴</nuxt-link>
-        </li>
-        <li>
-          <nuxt-link :to="{ path: '/admin/messages' }">メッセージ</nuxt-link>
-        </li>
-        <li>
-          <nuxt-link :to="{ path: '/admin/settings' }">設定</nuxt-link>
-        </li>
+        <li><nuxt-link :to="{ path: '/admin' }">Dashboard</nuxt-link></li>
+        <li><nuxt-link :to="{ path: '/admin/players' }">プレーヤー</nuxt-link></li>
+        <li><nuxt-link :to="{ path: '/admin/login/histories' }">ログイン履歴</nuxt-link></li>
+        <li><nuxt-link :to="{ path: '/admin/topics' }">お知らせ</nuxt-link></li>
+        <li><nuxt-link :to="{ path: '/admin/messages' }">メッセージ</nuxt-link></li>
+        <li><nuxt-link :to="{ path: '/admin/worlds' }">ワールド</nuxt-link></li>
+        <li><nuxt-link :to="{ path: '/admin/settings' }">設定</nuxt-link></li>
       </ul>
       <h3>Games</h3>
       <ul>
