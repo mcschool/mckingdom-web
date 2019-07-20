@@ -18,24 +18,29 @@ from app.api.admin import (
     world as admin_world,
     athletic_course as admin_athletic_course
 )
-from app.api.server import (
-    player as server_player
+from app.api.web import (
+    player as web_player,
+    world as web_world,
 )
 
 application = Flask(__name__)
 apps = [
     health.app,
+
     game_player.app,
     game_access.app,
+    game_world.app,
+    game_athletic_completed_players.app,
+    game_command.app,
+
     admin_player.app,
     admin_access.app,
     admin_message.app,
     admin_world.app,
-    game_world.app,
     admin_athletic_course.app,
-    game_athletic_completed_players.app,
-    server_player.app,
-    game_command.app,
+
+    web_player.app,
+    web_world.app,
 ]
 for app in apps:
     application.register_blueprint(app)
