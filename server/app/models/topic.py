@@ -1,6 +1,6 @@
 from datetime import datetime
 from sqlalchemy.schema import Column
-from sqlalchemy.types import Integer, String, DateTime, Text
+from sqlalchemy.types import Integer, String, DateTime, Text, Boolean
 from ._base import DeclarativeBase
 
 
@@ -13,6 +13,7 @@ class Topic(DeclarativeBase):
     published_at = Column(DateTime, default=None)
     updated_at = Column(DateTime, default=datetime.now())
     created_at = Column(DateTime, default=datetime.now())
+    is_published = Column(Boolean, default=False)
 
 
     def as_dict(self):
