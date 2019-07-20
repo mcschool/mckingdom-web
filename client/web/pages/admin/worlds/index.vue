@@ -39,7 +39,6 @@ export default {
   async asyncData({ app }) {
     try {
       const { worlds } = await app.$axios.$get(`http://localhost:5000/api/admin/worlds`)
-      console.log(worlds)
       return {
         worlds: worlds,
       }
