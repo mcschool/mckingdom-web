@@ -42,7 +42,7 @@ def get_world_id(id = None):
     if world is None:
         return "error: no world_id"
     res = {
-        "world": world.as_dict(),
+        "world": world.as_dict()
     }
     return jsonify(res)
 
