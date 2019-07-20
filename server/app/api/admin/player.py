@@ -50,11 +50,6 @@ def patch_players():
     return "bye bye"
 
 
-@app.route("/api/admin/players", methods=['POST'])
-def post_players():
-    return "yo"
-
-
 @app.route("/api/admin/players/<id>/role", methods=['PUT'])
 def put_player_role(id=None):
     data = request. get_json()
