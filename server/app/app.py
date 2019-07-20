@@ -16,7 +16,8 @@ from app.api.admin import (
     access as admin_access,
     message as admin_message,
     world as admin_world,
-    athletic_course as admin_athletic_course
+    athletic_course as admin_athletic_course,
+    topic as admin_topic,
 )
 from app.api.web import (
     player as web_player,
@@ -38,6 +39,7 @@ apps = [
     admin_message.app,
     admin_world.app,
     admin_athletic_course.app,
+    admin_topic.app,
 
     web_player.app,
     web_world.app,

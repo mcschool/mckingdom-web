@@ -6,7 +6,7 @@ table = Table(
     'topics', meta,
     Column('id', BigInteger, primary_key=True, nullable=False),
     Column('title', String(255), nullable=False),
-    Column('body', Integer),
+    Column('body', Text),
     Column('image_path', String(255)),
     Column('published_at', DateTime),
     Column('updated_at', DateTime),
