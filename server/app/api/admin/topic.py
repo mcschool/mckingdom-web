@@ -14,13 +14,8 @@ def post_topics():
     topic.title = data.get('title')
     topic.body = data.get('body')
     topic.is_published = data.get('is_published')
-    print("=====")
-    print(topic.is_published)
-    print("=====")
     if topic.is_published == "true":
         topic.published_at = datetime.now()
-        print("inside if")
-        print("=====")
     else:
         topic.published_at = None
     g.session.add(topic)
