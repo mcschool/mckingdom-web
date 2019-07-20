@@ -100,8 +100,7 @@ def get_player_pvp_kill_rank():
     order_kills = g.session.query(Player).order_by(
         desc(Player.pvp_total_kills)
     ).all()
-    print("=====")
+    data = []
     for player in order_kills:
-        print(player.name, player.pvp_total_kills)
-    print("=====")
-    return "success"
+        data.append(player.as_dict())
+    return jsonify(data)
