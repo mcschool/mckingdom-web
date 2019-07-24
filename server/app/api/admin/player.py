@@ -9,8 +9,12 @@ app = Blueprint('admin_player', __name__)
 
 @app.route("/api/admin/players", methods=['GET'])
 def get_players():
-    test = {"a": 1}
-    return jsonify(test)
+    players = g.session.query(Player).all()
+    p = list()
+    for player in players:
+        p.append(player.as_dict())
+    print(p)
+    return jsonify(p)
 
 
 @app.route("/api/admin/players/test", methods=['GET'])
