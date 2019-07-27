@@ -1,4 +1,4 @@
-from flask import Blueprint, g, request
+from flask import Blueprint, g, request, jsonify
 from datetime import datetime
 
 app = Blueprint('health', __name__)
@@ -6,24 +6,39 @@ app = Blueprint('health', __name__)
 
 @app.route("/api/health", methods=['GET'])
 def get_health():
-    return "health: GET"
+    data = {
+        "status": "health GET",
+    }
+    return jsonify(data)
 
 
 @app.route("/api/health", methods=['POST'])
 def post_health():
-    return "health: POST"
+    data = {
+        "status": "health POST",
+    }
+    return jsonify(data)
 
 
 @app.route("/api/health", methods=['PUT'])
 def put_health():
-    return "health: PUT"
+    data = {
+        "status": "health PUT",
+    }
+    return jsonify(data)
 
 
 @app.route("/api/health", methods=['PATCH'])
 def patch_health():
-    return "health: PATCH"
+    data = {
+        "status": "health PATCH",
+    }
+    return jsonify(data)
 
 
 @app.route("/api/health", methods=['DELETE'])
 def delete_health():
-    return "health: DELETE"
+    data = {
+        "status": "health DELETE",
+    }
+    return jsonify(data)
