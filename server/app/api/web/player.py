@@ -10,7 +10,6 @@ app = Blueprint('web_player', __name__)
 @app.route("/api/web/players/all", methods=['GET'])
 def get_player_all():
     players = g.session.query(Player).count()
-    response = []
     data = {"players" : players}
     return jsonify(data)
 
