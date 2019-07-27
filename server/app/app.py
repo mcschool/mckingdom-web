@@ -22,6 +22,7 @@ from app.api.admin import (
 from app.api.web import (
     player as web_player,
     world as web_world,
+    topic as web_topic,
 )
 
 application = Flask(__name__)
@@ -43,6 +44,7 @@ apps = [
 
     web_player.app,
     web_world.app,
+    web_topic.app,
 ]
 for app in apps:
     application.register_blueprint(app)
