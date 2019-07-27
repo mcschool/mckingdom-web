@@ -2,6 +2,9 @@
   <section>
     <Hero />
     <div style="margin-bottom: 30px;">
+      <div class="container" style="margin-bottom: 30px;">
+        <div style="text-align: center;">＼ 今{{ nowPlayingPlayerCount }}人が遊んでいて、今までに{{ totalPlayerCount }}人が遊びました。 ／</div>
+      </div>
       <div class="container">
         <div style="text-align: center; font-size: 32px; margin-bottom: 10px;">ゲーム</div>
         <div class="columns">
@@ -31,6 +34,20 @@ export default {
   head() {
     return {
       title: "MCKINGDOM - マインクラフトマルチサーバー",
+    }
+  },
+  async asyncData({ app }) {
+    try {
+      const res1 = await app.$axios.$get(`/api/web/players/loginStatus`)
+      const nowPlayingPlayerCount = res1.now
+      const res2 = await app.$axios.$get(`/api/web/players/all`)
+      const totalPlayerCount = res2.players
+      return {
+        nowPlayingPlayerCount: nowPlayingPlayerCount,
+        totalPlayerCount: totalPlayerCount,
+      }
+    } catch (err) {
+      console.log(err)
     }
   },
 }

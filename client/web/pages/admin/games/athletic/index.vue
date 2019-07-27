@@ -26,9 +26,26 @@
         コース
         <a @click="addModal.isOpen = !addModal.isOpen"><i class="fa fa-plus"></i> 新しいコースを追加</a>
       </h3>
-      <div class="columns">
-        <div class="column">aaa</div>
-      </div>
+      <Box>
+        <table class="table is-fullwidth">
+          <thead>
+            <tr>
+              <th style="width: 60px;">ID</th>
+              <th style="width: 100px;">コースNo</th>
+              <th>コース名</th>
+              <th style="width: 80px;">難易度</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="course of courses" :key="`course-${course.id}`">
+              <td>{{ course.id }}</td>
+              <td>{{ course.course_no }}</td>
+              <td>{{ course.name }}</td>
+              <td>{{ course.difficulty }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </Box>
     </section>
     <Modal v-if="addModal.isOpen" :close="closeAddModal" :callback="createCourse">
       <template #header>
@@ -41,12 +58,16 @@
             <input type="text" class="input" v-model="newCourse.name" />
           </div>
           <div class="field">
+            <label class="label">画像パス</label>
+            <input type="text" class="input" v-model="newCourse.image_path" />
+          </div>
+          <div class="field">
             <label class="label">説明文</label>
             <textarea class="textarea" rows="4" v-model="newCourse.description"></textarea>
           </div>
           <div class="field">
             <label class="label">コースno</label>
-            <input type="number" class="input" v-model="newCourse.courseNo" />
+            <input type="number" class="input" v-model="newCourse.courseNo" style="width: 100px;" />
           </div>
           <div class="field">
             <label class="label">Difficulty</label>
@@ -78,9 +99,21 @@ export default {
       newCourse: {
         name: null,
         description: null,
+        image_path: null,
         courseNo: null,
         difficulty: 1,
       },
+    }
+  },
+  async asyncData({ app }) {
+    try {
+      const { courses } = await app.$axios.$get(`/api/admin/athletic_courses`)
+      console.log(courses)
+      return {
+        courses: courses,
+      }
+    } catch (err) {
+      console.log(err)
     }
   },
   methods: {
@@ -104,4 +137,23 @@ export default {
   },
 }
 </script>
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.table {
+  background: transparent;
+  thead {
+    th,
+    td {
+      color: #96989c;
+    }
+    th {
+      border-color: rgba(0, 0, 0, 0.2);
+    }
+  }
+  tbody {
+    td {
+      color: #96989c;
+      border-color: rgba(0, 0, 0, 0.2);
+    }
+  }
+}
+</style>

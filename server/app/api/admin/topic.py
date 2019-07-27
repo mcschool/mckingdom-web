@@ -13,8 +13,9 @@ def post_topics():
     topic = Topic()
     topic.title = data.get('title')
     topic.body = data.get('body')
+    topic.image_path = data.get('image_path')
     topic.is_published = data.get('is_published')
-    if topic.is_published == "true":
+    if topic.is_published is True:
         topic.published_at = datetime.now()
     else:
         topic.published_at = None

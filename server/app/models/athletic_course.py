@@ -11,6 +11,7 @@ class AthleticCourse(DeclarativeBase):
     course_no = Column(Integer)
     name = Column(String(255))
     description = Column(String(255))
+    image_path = Column(String(255))
     difficulty = Column(Integer)
     updated_at = Column(DateTime, default=datetime.now())
     created_at = Column(DateTime, default=datetime.now())

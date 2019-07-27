@@ -13,8 +13,10 @@ def get_players():
     p = list()
     for player in players:
         p.append(player.as_dict())
-    print(p)
-    return jsonify(p)
+    data = {
+        "players": p,
+    }
+    return jsonify(data)
 
 
 @app.route("/api/admin/players/test", methods=['GET'])
