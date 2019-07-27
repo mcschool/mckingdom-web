@@ -16,3 +16,17 @@ def get_topics_all():
         "topics": topics_data
     }
     return jsonify(data) 
+
+@app.route("/api/web/topics/<id>", methods = ['GET'])
+def get_topic_id(id = None):
+    topic = g.session.query(Topic).filter(
+        Topic.id == id
+    ).first()
+    if topic is None:
+        return "topic : null"
+    if topic.is_published is False:
+        return "topic : null"
+    data = {
+        "topic" : topic.as_dict()
+    }
+    return jsonify(data)
