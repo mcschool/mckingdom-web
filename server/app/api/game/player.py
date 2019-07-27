@@ -1,38 +1,41 @@
 import json
 from flask import Blueprint, g, request, jsonify
-from app.models import Player
+from app.models import Player, Access
 from datetime import datetime
 from sqlalchemy import desc
 
 app = Blueprint('game_player', __name__)
 
-@app.route("/api/game/players", methods=['PATCH'])
-def patch_players():
+@app.route("/api/game/players", methods=['POST'])
+def post_players():
     data = request.get_json()
     if data['uuid'] is None:
-        print("error: no uuid")
+        return("error: no uuid")
+    #データをGET
+    p = g.session.query(Player).filter(
+        Player.uuid == data['uuid']
+    ).first()
+    if p is None:
+        print("いないから登録")#INSERT
+        player = Player()
+        player.uuid = data['uuid']
+        player.name = data['name']
+        g.session.add(player)
+        g.session.commit()
     else:
-        #データをGET
-        p = g.session.query(Player).filter(
-            Player.uuid == data['uuid']
-        ).first()
-        if p is None:
-            print("いないから登録")#INSERT
-            player = Player()
-            player.uuid = data['uuid']
-            player.name = data['name']
-            g.session.add(player)
-            g.session.commit()
+        p.login_count = p.login_count + 1
+        p.last_login_at = datetime.now()
+        g.session.commit()
+        if p.name == data['name']:
+            pass
         else:
-            p.login_count = p.login_count + 1
-            p.last_login_at = datetime.now()
+            p.name = p.name = data['name']
             g.session.commit()
-            if p.name == data['name']:
-                pass
-            else:
-                p.name = p.name = data['name']
-                g.session.commit()
-
+    access = Access()
+    access.uuid = data['uuid']
+    access.created_at = datetime.now()
+    g.session.add(access)
+    g.session.commit()
     return "success"
 
 
