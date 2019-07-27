@@ -9,7 +9,7 @@ from app.api.game import (
     access as game_access,
     world as game_world,
     athletic_completed_players as game_athletic_completed_players,
-    command as game_command,
+    command as game_command, messages as game_messages
 )
 from app.api.admin import (
     player as admin_player,
@@ -34,6 +34,7 @@ apps = [
     game_world.app,
     game_athletic_completed_players.app,
     game_command.app,
+    game_messages.app,
 
     admin_player.app,
     admin_access.app,
