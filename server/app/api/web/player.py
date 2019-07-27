@@ -9,10 +9,9 @@ app = Blueprint('web_player', __name__)
 # playerの人数を表示する
 @app.route("/api/web/players/all", methods=['GET'])
 def get_player_all():
-    players = g.session.query(Player).all()
-    player_count = len(players)
+    players = g.session.query(Player).count()
     response = []
-    data = {"players" : player_count}
+    data = {"players" : players}
     return jsonify(data)
 
 @app.route("/api/web/players/loginStatus", methods=['GET'])
