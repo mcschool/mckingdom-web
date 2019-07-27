@@ -1,12 +1,21 @@
 <template>
   <div class="hero">
-    <div class="image-wrapper">
-      <div class="filter"></div>
-      <div class="hero-contents">
-        <div class="server-name">MCKINGDOM</div>
+    <div class="container">
+      <div class="side-contents">
+        <div class="brand">MC<br />KINGDOM</div>
         <div class="server-address">mckd.me:80</div>
+        <div class="news">
+          <div class="news-title">NEWS</div>
+          <ul class="news-list">
+            <li>February 26th: ランキングが表示されるようになりました</li>
+            <li>February 22th: アスレのコースが増えました</li>
+            <li>February 18th: リニューアルのお知らせ</li>
+          </ul>
+        </div>
       </div>
-      <img src="/hero.png" />
+      <div class="bg-image">
+        <img src="/hero.png" />
+      </div>
     </div>
   </div>
 </template>
@@ -15,32 +24,46 @@ export default {}
 </script>
 <style lang="scss" scoped>
 .hero {
-  padding: 30px;
-  .image-wrapper {
-    position: relative;
-    .filter {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+  color: #fff;
+  height: 660px;
+  background: #000;
+  .container {
+    width: 100%;
+    height: 100%;
+    padding-top: 60px;
+    .side-contents {
+      position: relative;
       z-index: 10;
-      background: rgba(0, 0, 0, 0.6);
-    }
-    .hero-contents {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      z-index: 11;
-      text-align: center;
-      .server-name {
+      .brand {
+        font-family: "Viga", cursive;
         font-size: 100px;
-        color: #fff;
+        line-height: 1;
       }
+
       .server-address {
-        font-size: 100px;
-        color: #fff;
+        font-family: "Viga", cursive;
+        font-size: 60px;
+        line-height: 1;
+        margin-top: 20px;
+        margin-bottom: 40px;
+      }
+
+      .news {
+        .news-title {
+          margin-bottom: 10px;
+        }
+      }
+    }
+    .bg-image {
+      position: absolute;
+      right: 0;
+      bottom: 0px;
+      padding: 50px 0 50px 460px;
+      height: 100%;
+      img {
+        height: 100%;
+        object-fit: cover;
+        opacity: 0.3;
       }
     }
   }

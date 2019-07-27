@@ -11,6 +11,10 @@ export default {}
 <style lang="scss" scoped>
 .g-nav {
   padding: 15px 0;
-  border-bottom: solid 1px #ddd;
+  .brand {
+    font-family: "Viga", cursive;
+    font-size: 50px;
+    color: #aaa;
+  }
 }
 </style>
