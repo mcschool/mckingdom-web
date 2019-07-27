@@ -28,7 +28,10 @@ def post_accesses_game_id(id = None):
 @app.route("/api/admin/access", methods = ['GET'])
 def get_access():
     accesses = g.session.query(Access).order_by(desc(Access.id)).all()
-    response = []
+    access_data = []
     for access in accesses:
-        response.append(access.as_dict())
-    return jsonify(response)
+        access_data.append(access.as_dict())
+    data = {
+        "accesses": access_data
+    }
+    return jsonify(data)
