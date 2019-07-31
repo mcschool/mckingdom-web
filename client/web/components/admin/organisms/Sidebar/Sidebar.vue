@@ -4,18 +4,18 @@
     <div class="menu">
       <h3>Main</h3>
       <ul>
-        <li><nuxt-link :to="{ path: '/admin' }">Dashboard</nuxt-link></li>
-        <li><nuxt-link :to="{ path: '/admin/players' }">プレーヤー</nuxt-link></li>
-        <li><nuxt-link :to="{ path: '/admin/login/histories' }">ログイン履歴</nuxt-link></li>
-        <li><nuxt-link :to="{ path: '/admin/topics' }">お知らせ</nuxt-link></li>
-        <li><nuxt-link :to="{ path: '/admin/messages' }">メッセージ</nuxt-link></li>
-        <li><nuxt-link :to="{ path: '/admin/worlds' }">ワールド</nuxt-link></li>
-        <li><nuxt-link :to="{ path: '/admin/settings' }">設定</nuxt-link></li>
+        <li :class="{ active: this.$route.path === '/admin' }"><nuxt-link :to="{ path: '/admin' }">Dashboard</nuxt-link></li>
+        <li :class="{ active: this.$route.path.match(/\/admin\/players/) }"><nuxt-link :to="{ path: '/admin/players' }">プレーヤー</nuxt-link></li>
+        <li :class="{ active: this.$route.path.match(/\/admin\/login\/histories/) }"><nuxt-link :to="{ path: '/admin/login/histories' }">ログイン履歴</nuxt-link></li>
+        <li :class="{ active: this.$route.path.match(/\/admin\/topics/) }"><nuxt-link :to="{ path: '/admin/topics' }">お知らせ</nuxt-link></li>
+        <li :class="{ active: this.$route.path.match(/\/admin\/messages/) }"><nuxt-link :to="{ path: '/admin/messages' }">メッセージ</nuxt-link></li>
+        <li :class="{ active: this.$route.path.match(/\/admin\/worlds/) }"><nuxt-link :to="{ path: '/admin/worlds' }">ワールド</nuxt-link></li>
+        <li :class="{ active: this.$route.path.match(/\/admin\/settings/) }"><nuxt-link :to="{ path: '/admin/settings' }">設定</nuxt-link></li>
       </ul>
       <h3>Games</h3>
       <ul>
-        <li><nuxt-link :to="{ path: '/admin/games/athletic' }">アスレ</nuxt-link></li>
-        <li><nuxt-link :to="{ path: '/admin/games/pvp' }">PVP</nuxt-link></li>
+        <li :class="{ active: this.$route.path.match(/\/admin\/games\/athletic/) }"><nuxt-link :to="{ path: '/admin/games/athletic' }">アスレ</nuxt-link></li>
+        <li :class="{ active: this.$route.path.match(/\/admin\/games\/pvp/) }"><nuxt-link :to="{ path: '/admin/games/pvp' }">PVP</nuxt-link></li>
       </ul>
     </div>
   </div>
@@ -66,6 +66,14 @@ export default {}
             transition: all 0.4s ease;
           }
           &:hover:before {
+            width: 18px;
+            border-color: #e25985;
+          }
+        }
+        &.active a {
+          color: #e25985;
+          font-weight: bold;
+          &:before {
             width: 18px;
             border-color: #e25985;
           }

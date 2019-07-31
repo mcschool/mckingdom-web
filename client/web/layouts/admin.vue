@@ -24,7 +24,7 @@ export default {
   height: 100%;
   background: #212529;
   color: #a4a8ae;
-  height: 100vh;
+  min-height: 100vh;
 }
 a {
   color: #a4a8ae;

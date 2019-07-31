@@ -5,9 +5,11 @@ from .db import get_database_engine
 
 import app.api.health as health
 from app.api.game import (
+    me as game_me,
     player as game_player,
     access as game_access,
     world as game_world,
+    athletic as game_athletic,
     athletic_completed_players as game_athletic_completed_players,
     command as game_command, messages as game_messages
 )
@@ -29,9 +31,11 @@ application = Flask(__name__)
 apps = [
     health.app,
 
+    game_me.app,
     game_player.app,
     game_access.app,
     game_world.app,
+    game_athletic.app,
     game_athletic_completed_players.app,
     game_command.app,
     game_messages.app,
