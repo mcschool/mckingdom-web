@@ -1,10 +1,12 @@
-from flask import Blueprint, g, request
+from flask import Blueprint, g, request, jsonify
 from datetime import datetime
 from app.models import Player, Access
 
-app = Blueprint('game_athletic_completed_players', __name__)
+app = Blueprint('game_me', __name__)
 
 
 @app.route("/api/game/me", methods=['PUT'])
 def me():
-    return "success"
+    data = request.get_json()
+    player = g.session.query(Player).filter(Player.uuid == data.get("json")).first()
+    return jsonify(player.as_dict())

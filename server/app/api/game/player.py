@@ -36,7 +36,7 @@ def post_players():
     access.created_at = datetime.now()
     g.session.add(access)
     g.session.commit()
-    return "success"
+    return jsonify(p.as_dict())
 
 
 @app.route("/api/game/players/<uuid>", methods=['GET'])
