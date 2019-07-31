@@ -1,6 +1,10 @@
 <template>
   <div class="footer">
-    <div class="container">footer</div>
+    <div class="container">
+      <div>
+        <nuxt-link :to="{ path: `/admin` }">コントロールパネル</nuxt-link>
+      </div>
+    </div>
   </div>
 </template>
 <script>
