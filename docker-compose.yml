@@ -1,13 +1,46 @@
-db:
-  image: mysql:5.7
-  command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_general_ci
-  volumes:
-    - db_data:/var/lib/mysql
-  restart: always
-  environment:
-    - MYSQL_ROOT_PASSWORD=password
-    - MYSQL_DATABASE=mckingdom
-    - MYSQL_USER=user
-    - MYSQL_PASSWORD=password
-  ports:
-    - 3306:3306
+version: '3.3'
+services:
+  nginx:
+    build: ./nginx
+    ports:
+      - "80:80"
+    tty: true
+    links:
+      - server
+      - web
+  server:
+    build: ./server
+    ports:
+      - "5000:5000"
+    volumes:
+      - "./server:/projects"
+    tty: true
+    environment:
+      TZ: Asia/Tokyo
+    command:
+      python manage.py runserver --host 0.0.0.0 --port 5000
+    links:
+      - db
+  web:
+    build: ./web
+    volumes:
+      - ./web/:/app/
+    ports:
+      - "3000:3000"
+    tty: true
+  db:
+    image: mysql:5.7
+    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_general_ci
+    volumes:
+      - db_data:/var/lib/mysql
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=password
+      - MYSQL_DATABASE=mckingdom
+      - MYSQL_USER=user
+      - MYSQL_PASSWORD=password
+    ports:
+      - 3306:3306
+
+volumes:
+  db_data:
