@@ -18,6 +18,7 @@ class Player(DeclarativeBase):
     pvp_max_kill_streaks = Column(Integer, default=0)
     pvp_total_kills = Column(Integer, default=0)
     role = Column(String(32))
+    athletic_clear_count = Column(Integer, default=0)
 
     def as_dict(self):
         return {c.name: getattr(self, c.name) for c in self.__table__.columns}

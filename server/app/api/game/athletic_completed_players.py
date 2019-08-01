@@ -2,6 +2,7 @@ import json
 from flask import Blueprint, g, request, jsonify
 from datetime import datetime
 from ...models.athletic_completed_players import AthleticCompletedPlayers
+from ...models.player import Player
 
 app = Blueprint('game_athletic_completed_players', __name__)
 
@@ -11,20 +12,27 @@ def post_athletic_completed_players():
     data = request.get_json()
     if data['athletic_course_id'] is None:
         return "error: no course id"
-    if data['athletic_player_id'] is None:
+    if data['player_id'] is None:
         return "error: no player id"
-    if data['athletic_player_uuid'] is None:
+    if data['player_uuid'] is None:
         return "error: no player uuid"
     if data['athletic_total_time'] is None:
         return "error: no total time"
     athletic = AthleticCompletedPlayers()
     athletic.athletic_course_id = data['athletic_course_id']
-    athletic.player_id = data['athletic_player_id']
-    athletic.player_uuid = data['athletic_player_uuid']
+    athletic.player_id = data['player_id']
+    athletic.player_uuid = data['player_uuid']
     athletic.total_time = data['athletic_total_time']
     g.session.add(athletic)
     g.session.commit()
-    return "success"
+
+    player = g.session.query(Player).filter(Player.uuid == data['player_uuid']).first()
+    player.athletic_clear_count = player.athletic_clear_count + 1
+    g.session.commit()
+    res = {
+        "success": True,
+    }
+    return jsonify(res)
 
 
 @app.route("/api/game/athletic_completed_players", methods=['GET'])
