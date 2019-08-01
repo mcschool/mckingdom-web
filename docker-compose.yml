@@ -22,7 +22,7 @@ services:
     links:
       - db
   web:
-    build: ./web
+    build: ./client/web
     volumes:
       - ./web/:/app/
     ports:
