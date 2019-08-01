@@ -1,5 +1,7 @@
 # APIサーバー起動
 run_server:
+	cd server/app/db/migrates && PYTHONPATH=../../ python manage.py upgrade
+	cd ../../../
 	cd server && pip install -r requirements.txt && python manage.py runserver
 
 # データベース起動
