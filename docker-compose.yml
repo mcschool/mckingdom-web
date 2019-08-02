@@ -24,7 +24,7 @@ services:
   web:
     build: ./client/web
     volumes:
-      - ./web/:/app/
+      - ./client/web/:/app/
     ports:
       - "3000:3000"
     tty: true
