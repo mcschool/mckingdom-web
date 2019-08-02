@@ -3,14 +3,12 @@ FROM node:10.13
 WORKDIR /app
 ADD . /app
 
-ARG BUILD_ENV=local
-ENV BUILD_ENV ${BUILD_ENV}
+#ARG BUILD_ENV=local
+#ENV BUILD_ENV ${BUILD_ENV}
 
-RUN pwd && ls -la
-RUN npm i npm@latest -g && npm i -g cross-env && npm i && npm i express
-RUN pwd && ls -la ./node_modules
+RUN npm i npm@latest -g && npm i
 RUN npm run build
-
+RUN ls -la
 ENV HOST 0.0.0.0
 EXPOSE 3000
 
