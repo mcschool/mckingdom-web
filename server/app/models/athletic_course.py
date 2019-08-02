@@ -15,6 +15,7 @@ class AthleticCourse(DeclarativeBase):
     difficulty = Column(Integer)
     updated_at = Column(DateTime, default=datetime.now())
     created_at = Column(DateTime, default=datetime.now())
+    play_count = Column(Integer, default=0)
 
     def as_dict(self):
         return {c.name: getattr(self, c.name) for c in self.__table__.columns}
