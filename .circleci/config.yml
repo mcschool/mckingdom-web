@@ -10,3 +10,19 @@ jobs:
     working_directory: ~/repo
     steps:
       - checkout
+  deploy:
+    docker:
+      - image: google/cloud-sdk:206.0.0
+    working_directory: ~/repo
+    steps:
+      - checkout
+      - run:
+          name: Authenticate Google Cloud
+          command: |
+            GOOGLE_PROJECT_ID=mckingdom
+            GCLOUD_SERVICE_KEY=${GCLOUD_SERVICE_KEY}
+            echo ${GCLOUD_SERVICE_KEY} | base64 -i --decode > ${HOME}/gcp-key.json
+            gcloud auth activate-service-account --key-file ${HOME}/gcp-key.json
+            gcloud --quiet config set project ${GOOGLE_PROJECT_ID}
+            gcloud --quiet config set compute/zone asia-northeast1-b
+            gcloud --quiet compute --project "mckingdom" ssh --zone "asia-northeast1-b" "smatosan@web" --command "whoami"
