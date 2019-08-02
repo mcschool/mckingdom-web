@@ -7,7 +7,7 @@ ARG BUILD_ENV=local
 ENV BUILD_ENV ${BUILD_ENV}
 
 RUN pwd && ls -la
-RUN npm i npm@latest -g && npm i -g cross-env && npm i -g
+RUN npm i npm@latest -g && npm i -g cross-env express && npm i
 RUN pwd && ls -la ./node_modules
 RUN npm run build
 
