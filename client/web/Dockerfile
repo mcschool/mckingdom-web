@@ -8,7 +8,7 @@ ENV BUILD_ENV ${BUILD_ENV}
 
 RUN pwd && ls -la
 RUN npm i npm@latest -g && npm install
-RUN pwd && ls -la
+RUN pwd && ls -la ./node_modules
 RUN npm run build
 
 ENV HOST 0.0.0.0
