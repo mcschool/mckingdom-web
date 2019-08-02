@@ -26,3 +26,13 @@ jobs:
             gcloud --quiet config set project ${GOOGLE_PROJECT_ID}
             gcloud --quiet config set compute/zone asia-northeast1-b
             gcloud --quiet compute --project "mckingdom" ssh --zone "asia-northeast1-b" "smatosan@web" --command "whoami"
+
+workflows:
+  version: 2
+  deploy:
+    jobs:
+      - deploy:
+          filters:
+            branches:
+              only:
+                - master
