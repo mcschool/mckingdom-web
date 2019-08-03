@@ -24,8 +24,8 @@ def put_command_password():
     return "success"
 
 
-@app.route("/api/game/command/email", methods=['PUT'])
-def put_command_email():
+@app.route("/api/game/command/email", methods=['POST'])
+def post_command_email():
     data = request.get_json()
     if data.get('uuid') is None:
         result = {
@@ -60,4 +60,5 @@ def put_command_email():
     result ={
         "success": True
     }
+    print(result)
     return jsonify(result)
