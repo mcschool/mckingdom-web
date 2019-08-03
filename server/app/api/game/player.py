@@ -6,6 +6,25 @@ from sqlalchemy import desc
 
 app = Blueprint('game_player', __name__)
 
+@app.route("/api/game/players/my_ranking", methods=['POST'])
+def post_players_myranking():
+    data = request.get_json()
+    p = g.session.query(Player).filter(
+        Player.uuid == data['uuid']
+    ).first()
+    more_logincount = g.session.query(Player).filter(
+        Player.login_count > p.login_count
+    ).count()
+    all_playercount = g.session.query(Player).count()
+    ranking = more_logincount + 1
+    response = {
+        "total_players": all_playercount,
+        "my_ranking": ranking,
+        "login_count": p.login_count
+    }
+    return jsonify(response)
+
+
 @app.route("/api/game/players", methods=['POST'])
 def post_players():
     data = request.get_json()
