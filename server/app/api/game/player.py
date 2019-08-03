@@ -16,11 +16,6 @@ def post_players_myranking():
         Player.login_count > p.login_count
     ).count()
     all_playercount = g.session.query(Player).count()
-    print("=====")
-    print(p.login_count)
-    print("=====")
-    print(more_logincount)
-    print("=====")
     ranking = more_logincount + 1
     response = {
         "total_players": all_playercount,
