@@ -3,8 +3,8 @@ FROM node:10.13
 WORKDIR /app
 ADD . /app
 
-#ARG BUILD_ENV=local
-#ENV BUILD_ENV ${BUILD_ENV}
+ARG BUILD_ENV=local
+ENV BUILD_ENV ${BUILD_ENV}
 
 RUN npm i npm@latest -g
 RUN npm i

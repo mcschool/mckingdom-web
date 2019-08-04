@@ -1,3 +1,5 @@
+git pull
+
 # docker build
 docker-compose build --no-cache web
 docker-compose build --no-cache server
