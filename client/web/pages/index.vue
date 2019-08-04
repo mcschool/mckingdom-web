@@ -3,7 +3,7 @@
     <Hero />
     <div class="summary">
       <div class="container">
-        <h3>Summary</h3>
+        <h3>Summary 1.1</h3>
         <div class="columns">
           <div class="column is-2 is-offset-2">
             <div class="s-title">NOW</div>
