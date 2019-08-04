@@ -2,6 +2,7 @@ const pkg = require('./package')
 const environment = process.env.NODE_ENV || "development"
 const env = require(`./env.${environment}.js`)
 
+console.log(env)
 
 module.exports = {
   mode: 'universal',
