@@ -54,7 +54,14 @@ module.exports = {
    ** Axios module configuration
    */
   axios: {
-    // See https://github.com/nuxt-community/axios-module#options
+    baseURL: env.baseUrl,
+    browserBaseURL: env.browserBaseUrl,
+    requestIntercepter: (config, { store }) => {
+      if (store.state.token) {
+        config.headers.common["Authorization"] = `Bearer ${store.state.token}`
+      }
+      return config
+    }
   },
 
   /*
