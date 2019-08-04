@@ -56,8 +56,8 @@ module.exports = {
    ** Axios module configuration
    */
   axios: {
-    baseURL: env.baseUrl,
-    browserBaseURL: env.browserBaseUrl,
+    baseURL: env.baseURL,
+    browserBaseURL: env.browserBaseURL,
     requestIntercepter: (config, { store }) => {
       if (store.state.token) {
         config.headers.common["Authorization"] = `Bearer ${store.state.token}`
