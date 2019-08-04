@@ -8,6 +8,7 @@ ENV BUILD_ENV ${BUILD_ENV}
 
 RUN npm i npm@latest -g
 RUN npm install
+RUN npm install --save-dev node-sass sass-loader
 RUN npm run build
 RUN pwd
 RUN ls -la
