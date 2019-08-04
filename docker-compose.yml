@@ -1,7 +1,8 @@
 version: '3.3'
 services:
   nginx:
-    build: ./nginx
+    build:
+      context: ./nginx
     ports:
       - "80:80"
     tty: true
@@ -9,7 +10,8 @@ services:
       - server
       - web
   server:
-    build: ./server
+    build:
+      context: ./server
     ports:
       - "5000:5000"
     volumes:
@@ -22,7 +24,8 @@ services:
     links:
       - db
   web:
-    build: ./client/web
+    build:
+      context: ./client/web
     volumes:
       - ./client/web:/app
     ports:
