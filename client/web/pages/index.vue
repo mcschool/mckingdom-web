@@ -1,6 +1,6 @@
 <template>
   <section>
-    <!-- <Hero /> -->
+    <Hero />
     <div class="summary">
       <div class="container">
         <h3>Summary 1.5</h3>
@@ -66,7 +66,7 @@ export default {
     try {
       // const res1 = await app.$axios.get(`/api/web/players/loginStatus`)
       const res1 = await app.$axios.get(`/api/health`)
-      console.log(res1)
+      console.log("res", res1)
       /*
       const nowPlayingPlayerCount = res1.now
       const res2 = await app.$axios.$get(`/api/web/players/all`)
@@ -77,7 +77,7 @@ export default {
         totalPlayerCount: 2,
       }
     } catch (err) {
-      console.log(err)
+      console.log("err", err)
     }
   },
 }
