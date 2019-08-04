@@ -7,11 +7,10 @@ run_server:
 # データベース起動
 # ホームページ起動
 run_web:
-run_db:
-	docker-compose up db
-
 	cd client/web && npm run dev
 
+run_db:
+	docker-compose up db
 
 # マイグレーション
 migrate:

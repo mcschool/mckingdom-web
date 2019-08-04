@@ -56,15 +56,24 @@ export default {
       title: "MCKINGDOM - マインクラフトマルチサーバー",
     }
   },
+  data() {
+    return {
+      nowPlayingPlayerCount: 1,
+      totalPlayerCount: 2,
+    }
+  },
   async asyncData({ app }) {
     try {
-      const res1 = await app.$axios.$get(`/api/web/players/loginStatus`)
+      const res1 = await app.$axios.get(`/api/web/players/loginStatus`)
+      console.log(res1)
+      /*
       const nowPlayingPlayerCount = res1.now
       const res2 = await app.$axios.$get(`/api/web/players/all`)
       const totalPlayerCount = res2.players
+      */
       return {
-        nowPlayingPlayerCount: nowPlayingPlayerCount,
-        totalPlayerCount: totalPlayerCount,
+        nowPlayingPlayerCount: 1,
+        totalPlayerCount: 2,
       }
     } catch (err) {
       console.log(err)
