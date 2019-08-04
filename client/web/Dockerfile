@@ -7,7 +7,8 @@ ADD . /app
 #ENV BUILD_ENV ${BUILD_ENV}
 
 RUN npm i npm@latest -g
-RUN npm i
+RUN npm audit fix
+RUN npm install
 RUN npm run build
 ENV HOST 0.0.0.0
 ENV NODE_ENV=production
