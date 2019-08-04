@@ -1,6 +1,6 @@
 <template>
   <section>
-    <Hero />
+    <!-- <Hero /> -->
     <div class="summary">
       <div class="container">
         <h3>Summary 1.4</h3>
