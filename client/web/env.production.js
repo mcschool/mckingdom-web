@@ -1,5 +1,5 @@
 module.exports = {
-  baseURL: "https://door-app.net",
+  baseURL: "https://server:5000",
   browserURL: "https://door-app.net",
   browserBaseURL: "https://door-app.net",
 }
