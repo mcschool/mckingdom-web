@@ -10,6 +10,7 @@ RUN npm i npm@latest -g
 RUN npm i
 RUN npm run build
 ENV HOST 0.0.0.0
+ENV NODE_ENV=production
 EXPOSE 3000
 
 CMD ["npm", "run", "start"]
