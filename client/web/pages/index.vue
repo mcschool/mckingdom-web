@@ -64,7 +64,8 @@ export default {
   },
   async asyncData({ app }) {
     try {
-      const res1 = await app.$axios.get(`/api/web/players/loginStatus`)
+      // const res1 = await app.$axios.get(`/api/web/players/loginStatus`)
+      const res1 = await app.$axios.get(`/api/health`)
       console.log(res1)
       /*
       const nowPlayingPlayerCount = res1.now
