@@ -24,22 +24,41 @@ def put_command_password():
     return "success"
 
 
-@app.route("/api/game/command/email", methods=['PUT'])
-def put_command_email():
+@app.route("/api/game/command/email", methods=['POST'])
+def post_command_email():
     data = request.get_json()
     if data.get('uuid') is None:
-        return "error: no uuid"
+        result = {
+            "success": False
+        }
+        return jsonify(result)
     if data.get('email') is None:
-        return "error: no email"
+        result = {
+            "success": False
+        }
+        return jsonify(result)
     if len(data.get('email')) <= 10:
-        return "error: email too short"
+        result = {
+            "success": False
+        }
+        return jsonify(result)
     if len(data.get('email')) >= 240:
-        return "error: email too long"
+        result = {
+            "success": False
+        }
+        return jsonify(result)
     if '@' in data.get('email'):
             player = g.session.query(Player).filter(
                 Player.uuid == data.get('uuid')
             ).first()
             player.email = data.get('email')
     else:
-        return "error: no @ mark"
-    return "success"
+        result = {
+            "success": False
+        }
+        return jsonify(result)
+    result ={
+        "success": True
+    }
+    print(result)
+    return jsonify(result)

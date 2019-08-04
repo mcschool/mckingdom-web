@@ -5,11 +5,11 @@ run_server:
 	cd server && pip install -r requirements.txt && python manage.py runserver
 
 # データベース起動
+# ホームページ起動
+run_web:
 run_db:
 	docker-compose up db
 
-# ホームページ起動
-run_web:
 	cd client/web && npm run dev
 
 
