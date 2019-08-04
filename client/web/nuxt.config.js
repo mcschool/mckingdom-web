@@ -1,8 +1,11 @@
 const pkg = require('./package')
+const environment = process.env.NODE_ENV || "development"
+const env = require(`./env.${environment}.js`)
+
 
 module.exports = {
   mode: 'universal',
-
+  env: env,
   /*
    ** Headers of the page
    */
