@@ -1,7 +1,7 @@
 import json
 from flask import Blueprint, g, request, jsonify
 from app.models import Player, Access
-from datetime import datetime
+from datetime import datetime, timedelta
 from sqlalchemy import desc
 
 app = Blueprint('game_player', __name__)
@@ -24,15 +24,15 @@ def post_players_myranking():
     }
     return jsonify(response)
 
-
 @app.route("/api/game/players", methods=['POST'])
 def post_players():
     data = request.get_json()
+    day = datetime.now() - timedelta(days = 1)
     if data['uuid'] is None:
         return("error: no uuid")
     #データをGET
     p = g.session.query(Player).filter(
-        Player.uuid == data['uuid']
+        Player.uuid == data['uuid'],
     ).first()
     if p is None:
         print("いないから登録")#INSERT
@@ -55,6 +55,13 @@ def post_players():
     access.created_at = datetime.now()
     g.session.add(access)
     g.session.commit()
+    
+    if p.last_login_at < day:
+        p.money = p.money + 1
+        g.session.commit()
+    else:
+        pass
+
     return jsonify(p.as_dict())
 
 
