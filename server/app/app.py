@@ -14,6 +14,7 @@ from app.api.game import (
     command as game_command, messages as game_messages
 )
 from app.api.admin import (
+    auth as admin_auth,
     player as admin_player,
     access as admin_access,
     message as admin_message,
@@ -40,6 +41,7 @@ apps = [
     game_command.app,
     game_messages.app,
 
+    admin_auth.app,
     admin_player.app,
     admin_access.app,
     admin_message.app,
