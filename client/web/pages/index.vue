@@ -53,6 +53,7 @@ export default {
   },
   head() {
     return {
+      titleTemplate: null,
       title: "MCKINGDOM - マインクラフトマルチサーバー",
     }
   },
@@ -65,8 +66,8 @@ export default {
   async asyncData({ app }) {
     try {
       // const res1 = await app.$axios.get(`/api/web/players/loginStatus`)
-      const res1 = await app.$axios.get(`/api/health`)
-      console.log("res", res1)
+      await app.$axios.get(`/api/health`)
+      // console.log("res", res1)
       /*
       const nowPlayingPlayerCount = res1.now
       const res2 = await app.$axios.$get(`/api/web/players/all`)

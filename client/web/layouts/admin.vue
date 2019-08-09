@@ -5,7 +5,12 @@
     </div>
     <div class="main--container">
       <div class="g--nav">
-        ナビ
+        <div class="left">
+          ナビ
+        </div>
+        <div class="right">
+          <a @click="logout">ログアウト</a>
+        </div>
       </div>
       <div class="main--content">
         <nuxt />
@@ -16,7 +21,16 @@
 <script>
 import Sidebar from "~/components/admin/organisms/Sidebar/Sidebar"
 export default {
+  middleware: "authAdmin",
   components: { Sidebar },
+  methods: {
+    logout() {
+      if (window.confirm("ログアウトしますか？")) {
+        this.$cookies.remove("auth.admin")
+        window.location.href = ""
+      }
+    },
+  },
 }
 </script>
 <style lang="scss">
@@ -44,10 +58,18 @@ a:hover {
     .g--nav {
       position: fixed;
       top: 0;
+      display: flex;
       background: #212529;
-      width: 100%;
+      width: calc(100% - 255px);
       border-bottom: solid 1px #333;
-      padding: 10px;
+      padding: 15px;
+      .left {
+        flex: 1;
+      }
+      .right {
+        flex: 1;
+        text-align: right;
+      }
     }
     .main--content {
       padding: 10px 15px;

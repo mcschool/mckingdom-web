@@ -2,7 +2,7 @@
   <div class="footer">
     <div class="container">
       <div>
-        <nuxt-link :to="{ path: `/admin` }">コントロールパネル</nuxt-link>
+        <nuxt-link :to="{ path: `/admin` }">管理者</nuxt-link>
       </div>
     </div>
   </div>
