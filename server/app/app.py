@@ -11,7 +11,7 @@ from app.api.game import (
     world as game_world,
     athletic as game_athletic,
     athletic_completed_players as game_athletic_completed_players,
-    command as game_command, messages as game_messages
+    command as game_command, messages as game_messages, pvp as game_pvp
 )
 from app.api.admin import (
     auth as admin_auth,
@@ -40,6 +40,7 @@ apps = [
     game_athletic_completed_players.app,
     game_command.app,
     game_messages.app,
+    game_pvp.app,
 
     admin_auth.app,
     admin_player.app,
