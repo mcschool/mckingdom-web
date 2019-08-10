@@ -52,11 +52,7 @@ def post_command_email():
             player = g.session.query(Player).filter(
                 Player.uuid == data.get('uuid')
             ).first()
-            print("=====")
-            print(vars(player))
-            print("=====")
             player.email = data.get('email')
-            print(player.email)
             g.session.add(player)
             g.session.commit()
     else:
