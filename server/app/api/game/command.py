@@ -1,5 +1,6 @@
 import json
 from flask import Blueprint, g, request, jsonify
+from datetime import datetime
 from ...models.player import Player
 
 app = Blueprint('game_command', __name__)
@@ -51,7 +52,13 @@ def post_command_email():
             player = g.session.query(Player).filter(
                 Player.uuid == data.get('uuid')
             ).first()
+            print("=====")
+            print(vars(player))
+            print("=====")
             player.email = data.get('email')
+            print(player.email)
+            g.session.add(player)
+            g.session.commit()
     else:
         result = {
             "success": False
@@ -60,5 +67,4 @@ def post_command_email():
     result ={
         "success": True
     }
-    print(result)
     return jsonify(result)
