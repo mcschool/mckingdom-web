@@ -2,6 +2,7 @@ from flask import Flask, g
 from flask_cors import CORS
 from sqlalchemy.orm import sessionmaker
 from .db import get_database_engine
+from .config import configure_app
 
 import app.api.health as health
 from app.api.game import (
@@ -56,8 +57,9 @@ apps = [
 for app in apps:
     application.register_blueprint(app)
 
-CORS(application)
 
+configure_app(application)
+CORS(application)
 
 
 @application.before_request

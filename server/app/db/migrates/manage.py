@@ -2,12 +2,12 @@
 import os
 from flask import Flask
 from migrate.versioning.shell import main
+from config import LocalProductionConfig, LocalConfig, ProductionConfig
 
 config = {
-    "local": "config.LocalConfig",
-    "test": "config.TestConfig",
-    "development": "config.DevelopmentConfig",
-    "production": "config.ProductionConfig",
+    "local": LocalConfig,
+    "local_production": LocalProductionConfig,
+    "production": ProductionConfig,
 }
 
 

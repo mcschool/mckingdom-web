@@ -4,4 +4,4 @@ ADD requirements.txt $project_dir
 WORKDIR $project_dir
 EXPOSE 5000
 RUN pip install -r requirements.txt
-CMD ["python", "manage.py", "runserver", "--host", "0.0.0.0", "--port", "5000"]
+CMD ["FLASK_CONFIGURATION=production", ""python", "manage.py", "runserver", "--host", "0.0.0.0", "--port", "5000"]
