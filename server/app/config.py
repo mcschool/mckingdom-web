@@ -4,4 +4,8 @@ class BaseConfig:
 
 
 class LocalConfig(BaseConfig):
-    SQLALCHEMY_DATABASE_URI = "mysql+pymysql://root:password@localhost/mckingdom"
+    SQLALCHEMY_DATABASE_URI = "mysql+pymysql://root:password@127.0.0.1/mckingdom"
+
+
+class ProductionConfig(BaseConfig):
+    SQLALCHEMY_DATABASE_URI = "mysql+pymysql://user:password@34.85.72.174/mckingdom"

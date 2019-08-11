@@ -17,6 +17,8 @@ migrate:
 	cd server/app/db/migrates && PYTHONPATH=../../ python manage.py upgrade
 migrate_down:
 	cd server/app/db/migrates && PYTHONPATH=../../ python manage.py downgrade 2
+migrate_prod:
+	cd server/app/db/migrates && FLASK_CONFIGURATION=production PYTHONPATH=../../ python manage.py upgrade
 
 
 
