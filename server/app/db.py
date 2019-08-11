@@ -4,7 +4,7 @@ from flask import current_app
 
 
 def get_database_engine():
-    SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://root:password@127.0.0.1/mckingdom'  # current_app.config['SQLALCHEMY_DATABASE_URI']
+    SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://root:password@db/mckingdom'  # current_app.config['SQLALCHEMY_DATABASE_URI']
     DEBUG = current_app.config['DEBUG']
     return sqlalchemy.create_engine(
         SQLALCHEMY_DATABASE_URI,
