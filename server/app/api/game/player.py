@@ -55,7 +55,11 @@ def post_players():
     access.created_at = datetime.now()
     g.session.add(access)
     g.session.commit()
-    
+
+    p = g.session.query(Player).filter(
+        Player.uuid == data['uuid'],
+    ).first()
+
     if p.last_login_at < day:
         p.money = p.money + 1
         g.session.commit()
