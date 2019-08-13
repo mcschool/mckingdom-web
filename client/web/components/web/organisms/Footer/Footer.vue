@@ -12,7 +12,6 @@ export default {}
 </script>
 <style lang="scss" scoped>
 .footer {
-  margin-top: 30px;
   background: #383838;
   color: #ddd;
 }

@@ -5,11 +5,9 @@
         <div class="brand">MC<br />KINGDOM</div>
         <div class="server-address">mckd.me:80</div>
         <div class="news">
-          <div class="news-title">NEWS</div>
+          <div class="news-title">Topics</div>
           <ul class="news-list">
-            <li>February 26th: ランキングが表示されるようになりました</li>
-            <li>February 22th: アスレのコースが増えました</li>
-            <li>February 18th: リニューアルのお知らせ</li>
+            <li v-for="topic of topics" :key="`topic-${topic.id}`">{{ dateFormat(topic.createdAt) }}: {{ topic.title }}</li>
           </ul>
         </div>
       </div>
@@ -20,7 +18,21 @@
   </div>
 </template>
 <script>
-export default {}
+import moment from "moment"
+export default {
+  props: {
+    topics: {
+      type: Array,
+      required: true,
+    },
+  },
+  methods: {
+    dateFormat(date) {
+      const d = moment(date)
+      return d.format("L")
+    },
+  },
+}
 </script>
 <style lang="scss" scoped>
 .hero {

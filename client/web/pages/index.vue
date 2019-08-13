@@ -1,13 +1,13 @@
 <template>
   <section>
-    <Hero />
+    <Hero :topics="topics" />
     <div class="summary">
       <div class="container">
-        <h3>Summary 1.5</h3>
+        <h3>Summary</h3>
         <div class="columns">
           <div class="column is-2 is-offset-2">
             <div class="s-title">NOW</div>
-            <div class="s-count">{{ nowPlayingPlayerCount }}</div>
+            <div class="s-count">--</div>
           </div>
           <div class="column is-2">
             <div class="s-title">TOTAL</div>
@@ -15,30 +15,38 @@
           </div>
           <div class="column is-2">
             <div class="s-title">GAMES</div>
-            <div class="s-count">10</div>
+            <div class="s-count">--</div>
           </div>
           <div class="column is-2">
             <div class="s-title">MINI GAMES</div>
-            <div class="s-count">20</div>
+            <div class="s-count">--</div>
           </div>
         </div>
       </div>
     </div>
-    <div>
+    <div class="games">
       <div class="container">
-        <div style="text-align: center; font-size: 32px; margin-bottom: 10px;">ゲーム</div>
-        <div class="columns">
-          <div v-for="world in [0, 1, 2, 3]" :key="`world-${world}`" class="column">
+        <h3>Games</h3>
+        <div class="columns game">
+          <div class="column is-2"></div>
+          <div class="column is-3">
+            <img src="https://i.gzn.jp/img/2019/05/09/minecraft-classic-10th-anniversary/00.jpg" />
+          </div>
+          <div class="column is-5">
+            <div class="game-title">アスレあります</div>
+            <div class="game-description">総nコース(2019.08現在)。クリアランキング。難易度だいぶ高め。アスレ作りたい人募集中。</div>
+            <div class="game-more">
+              <nuxt-link :to="{ path: '/games/athletic' }" class="button is-primary is-outlined">くわしく <i class="fa fa-fw fa-arrow-right"></i></nuxt-link>
+            </div>
+          </div>
+          <!--
+          <div v-for="world in [0, 1, 2, 3]" :key="`world-${world}`" class="column is-3">
             <div>
               <img src="https://i.gzn.jp/img/2019/05/09/minecraft-classic-10th-anniversary/00.jpg" />
             </div>
           </div>
+          -->
         </div>
-      </div>
-    </div>
-    <div>
-      <div class="container">
-        <div>お知らせ</div>
       </div>
     </div>
   </section>
@@ -65,15 +73,9 @@ export default {
   },
   async asyncData({ app }) {
     try {
-      // const res1 = await app.$axios.get(`/api/web/players/loginStatus`)
-      await app.$axios.get(`/api/health`)
-      // console.log("res", res1)
-      /*
-      const nowPlayingPlayerCount = res1.now
-      const res2 = await app.$axios.$get(`/api/web/players/all`)
-      const totalPlayerCount = res2.players
-      */
+      const data = await app.$axios.$get(`/api/web/pages/index`)
       return {
+        topics: data.topics,
         nowPlayingPlayerCount: 1,
         totalPlayerCount: 2,
       }
@@ -102,6 +104,36 @@ export default {
     font-family: "Viga", cursive;
     font-size: 48px;
     color: #fff;
+  }
+}
+.games {
+  background: #000;
+  padding: 60px 0 90px;
+  h3 {
+    font-family: "Viga", cursive;
+    font-size: 48px;
+    margin-bottom: 20px;
+    color: #aaa;
+    text-align: center;
+  }
+  .game {
+    .game-title {
+      color: #eee;
+      font-size: 32px;
+      font-weight: bold;
+    }
+    .game-description {
+      color: #aaa;
+      font-size: 18px;
+      margin: 10px 0 15px;
+    }
+    .button {
+      background: transparent;
+      &:hover {
+        border-color: #eee;
+        color: #eee;
+      }
+    }
   }
 }
 </style>
