@@ -24,6 +24,7 @@ from app.api.admin import (
     topic as admin_topic,
 )
 from app.api.web import (
+    pages as web_pages,
     player as web_player,
     world as web_world,
     topic as web_topic,
@@ -50,6 +51,7 @@ apps = [
     admin_athletic_course.app,
     admin_topic.app,
 
+    web_pages.app,
     web_player.app,
     web_world.app,
     web_topic.app,

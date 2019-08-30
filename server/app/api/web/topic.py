@@ -6,6 +6,7 @@ from ...models.topic import Topic
 
 app = Blueprint('web_topic', __name__)
 
+
 @app.route("/api/web/topics", methods=['GET'])
 def get_topics_all():
     topics = g.session.query(Topic).all()
@@ -17,8 +18,9 @@ def get_topics_all():
     }
     return jsonify(data) 
 
-@app.route("/api/web/topics/<id>", methods = ['GET'])
-def get_topic_id(id = None):
+
+@app.route("/api/web/topics/<id>", methods=['GET'])
+def get_topic_id(id=None):
     topic = g.session.query(Topic).filter(
         Topic.id == id
     ).first()
@@ -27,6 +29,6 @@ def get_topic_id(id = None):
     if topic.is_published is False:
         return "topic : null"
     data = {
-        "topic" : topic.as_dict()
+        "topic": topic.as_dict()
     }
     return jsonify(data)
