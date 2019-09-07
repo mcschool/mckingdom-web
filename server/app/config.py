@@ -15,7 +15,7 @@ class ProductionConfig(BaseConfig):
 
 
 class LocalProductionConfig(BaseConfig):
-    SQLALCHEMY_DATABASE_URI = "mysql+pymysql://user:password@34.85.72.174/mckingdom"
+    SQLALCHEMY_DATABASE_URI = "mysql+pymysql://user:password@34.85.76.41/mckingdom"
 
 
 config = {
