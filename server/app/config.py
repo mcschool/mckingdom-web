@@ -7,7 +7,7 @@ class BaseConfig:
 
 
 class LocalConfig(BaseConfig):
-    SQLALCHEMY_DATABASE_URI = "mysql+pymysql://root:password@localhost/mckingdom"
+    SQLALCHEMY_DATABASE_URI = "mysql+pymysql://user:password@localhost/mckingdom"
 
 
 class ProductionConfig(BaseConfig):
@@ -28,7 +28,7 @@ config = {
 def configure_app(application):
     config_name = os.getenv("FLASK_CONFIGURATION", "local")
     print("@@@@@@@@@@@@@@@@@@@@")
-    print(config_name)
-    print(config[config_name])
+    print("1", config_name)
+    print("2", config[config_name])
     print("@@@@@@@@@@@@@@@@@@@@")
     application.config.from_object(config[config_name])

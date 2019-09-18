@@ -27,6 +27,6 @@ if __name__ == '__main__':
 
     print("=================")
     print(env)
-    print("=================")
     print(url)
+    print("=================")
     main(debug='true', url=url, repository='.')
