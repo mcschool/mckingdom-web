@@ -78,7 +78,6 @@ export default {
     try {
       const { players } = await app.$axios.$get(`/api/admin/players`)
       const data = await app.$axios.$get(`/api/admin/players/loginInfo`)
-      console.log("pppp", data)
       return {
         players: players,
         totalPlayerCount: data.all,
