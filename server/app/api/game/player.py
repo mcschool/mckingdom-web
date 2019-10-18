@@ -6,6 +6,7 @@ from sqlalchemy import desc
 
 app = Blueprint('game_player', __name__)
 
+
 @app.route("/api/game/players/my_ranking", methods=['POST'])
 def post_players_myranking():
     data = request.get_json()
@@ -23,6 +24,7 @@ def post_players_myranking():
         "login_count": p.login_count
     }
     return jsonify(response)
+
 
 @app.route("/api/game/players", methods=['POST'])
 def post_players():
