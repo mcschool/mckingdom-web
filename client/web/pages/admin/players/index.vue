@@ -4,25 +4,37 @@
     <div class="columns">
       <div class="column is-3">
         <Box class="summary-box">
-          <div><b>32</b>users</div>
+          <div>
+            <b>{{ thisWeekPlayerCount }}</b>
+            users
+          </div>
           <div>今週のログイン</div>
         </Box>
       </div>
       <div class="column is-3">
         <Box class="summary-box">
-          <div><b>64</b>users</div>
+          <div>
+            <b>{{ thisMonthPlayerCount }}</b>
+            users
+          </div>
           <div>今月のログイン</div>
         </Box>
       </div>
       <div class="column is-3">
         <Box class="summary-box">
-          <div><b>64</b>users</div>
+          <div>
+            <b>{{ totalPlayerCount }}</b>
+            users
+          </div>
           <div>TotalUsers</div>
         </Box>
       </div>
       <div class="column is-3">
         <Box class="summary-box">
-          <div><b>64</b>users</div>
+          <div>
+            <b>{{ bounceBackPlayerCount }}</b>
+            users
+          </div>
           <div>直帰Users</div>
         </Box>
       </div>
@@ -46,8 +58,8 @@
               <td>{{ player.name }}</td>
               <td>{{ player.uuid }}</td>
               <td>{{ player.login_count }}</td>
-              <td>{{ player.last_login_at }}</td>
-              <td>{{ player.created_at }}</td>
+              <td>{{ dateFormat(player.last_login_at) }}</td>
+              <td>{{ dateFormat(player.created_at) }}</td>
             </tr>
           </tbody>
         </table>
@@ -56,6 +68,7 @@
   </div>
 </template>
 <script>
+import moment from "moment"
 import PageHeader from "~/components/admin/molecules/PageHeader/PageHeader"
 import Box from "~/components/admin/molecules/Box/Box"
 export default {
@@ -64,12 +77,24 @@ export default {
   async asyncData({ app }) {
     try {
       const { players } = await app.$axios.$get(`/api/admin/players`)
+      const data = await app.$axios.$get(`/api/admin/players/loginInfo`)
       return {
         players: players,
+        totalPlayerCount: data.all,
+        thisMonthPlayerCount: data.thisMonth,
+        thisWeekPlayerCount: data.thisWeek,
+        bounceBackPlayerCount: data.bounceBack,
       }
     } catch (err) {
       console.log(err)
     }
+  },
+  methods: {
+    dateFormat: function(date) {
+      const d = moment(date)
+      d.add(-9, "hours")
+      return d.format("YYYY-MM-DD HH:mm:ss")
+    },
   },
 }
 </script>
