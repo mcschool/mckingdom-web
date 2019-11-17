@@ -1,6 +1,7 @@
 from datetime import datetime
 from sqlalchemy.schema import Column
 from sqlalchemy.types import Integer, String, DateTime
+from sqlalchemy.sql import func
 from ._base import DeclarativeBase
 
 
@@ -12,9 +13,9 @@ class Player(DeclarativeBase):
     email = Column(String(255))
     password = Column(String(255))
     login_count = Column(Integer, default=1)
-    last_login_at = Column(DateTime, default=datetime.now())
-    created_at = Column(DateTime, default=datetime.now())
-    updated_at = Column(DateTime, default=datetime.now())
+    last_login_at = Column(DateTime, default=func.now())
+    created_at = Column(DateTime, default=func.now())
+    updated_at = Column(DateTime, default=func.now(), onupdate=func.now())
     pvp_max_kill_streaks = Column(Integer, default=0)
     pvp_total_kills = Column(Integer, default=0)
     role = Column(String(32))

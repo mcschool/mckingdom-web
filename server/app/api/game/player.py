@@ -31,13 +31,14 @@ def post_players():
     data = request.get_json()
     day = datetime.now() - timedelta(days = 1)
     if data['uuid'] is None:
-        return("error: no uuid")
-    #データをGET
+        jsonify({"status": 400})
+
+    # データをGET
     p = g.session.query(Player).filter(
         Player.uuid == data['uuid'],
     ).first()
     if p is None:
-        print("いないから登録")#INSERT
+        print("いないから登録")  # INSERT
         player = Player()
         player.uuid = data['uuid']
         player.name = data['name']
