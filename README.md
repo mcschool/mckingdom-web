@@ -10,6 +10,14 @@ repository_id VARCHAR(255) = mckingdom
 repository_path TEXT = null
 version INTEGER = 0
 ```
+```
+CREATE TABLE `migrate_version` (
+  `repository_id` varchar(255) DEFAULT NULL,
+  `repository_path` text,
+  `version` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+```
+
 
 ### 開発環境起動
 ```
