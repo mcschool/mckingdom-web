@@ -15,6 +15,8 @@ class World(DeclarativeBase):
     created_at = Column(DateTime, default=func.now())
     description = Column(String(255))
     image_path = Column(String(255))
+    world_name = Column(String(64))
+    server_name = Column(String(64))
 
 
     def as_dict(self):

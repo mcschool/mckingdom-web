@@ -4,6 +4,9 @@
     name: メインロビー
     login_count: 0
     description: 説明文
+    image_path:
+    world_name: lobby
+    server_name: earth
 
 - model: app.models.world.World
   fields:
@@ -11,6 +14,9 @@
     name: アスレチック
     login_count: 0
     description: 説明文
+    image_path:
+    world_name: athletic
+    server_name: earth
 
 - model: app.models.world.World
   fields:
@@ -18,6 +24,9 @@
     name: earth建築
     login_count: 0
     description: 説明文
+    image_path:
+    world_name: build
+    server_name: earth
 
 - model: app.models.world.World
   fields:
@@ -25,3 +34,6 @@
     name: Mobs Killer
     login_count: 0
     description: 説明文
+    image_path:
+    world_name: pve
+    server_name: earth

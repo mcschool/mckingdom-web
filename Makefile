@@ -20,7 +20,9 @@ migrate_down:
 migrate_prod:
 	cd server/app/db/migrates && FLASK_CONFIGURATION=local_production PYTHONPATH=../../ python manage.py upgrade
 
-
+# fixtureデータimport
+import_data:
+	cd server && python manage.py import_data
 
 # requirements.txt からモジュールをinstallする
 pip_install:
