@@ -1,0 +1,27 @@
+- model: app.models.world.World
+  fields:
+    id: 1
+    name: メインロビー
+    login_count: 0
+    description: 説明文
+
+- model: app.models.world.World
+  fields:
+    id: 2
+    name: アスレチック
+    login_count: 0
+    description: 説明文
+
+- model: app.models.world.World
+  fields:
+    id: 3
+    name: earth建築
+    login_count: 0
+    description: 説明文
+
+- model: app.models.world.World
+  fields:
+    id: 4
+    name: Mobs Killer
+    login_count: 0
+    description: 説明文

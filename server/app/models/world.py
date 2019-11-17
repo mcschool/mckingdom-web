@@ -1,7 +1,8 @@
+import json
 from datetime import datetime
 from sqlalchemy.schema import Column
 from sqlalchemy.types import Integer, String, DateTime
-import json
+from sqlalchemy.sql import func
 from ._base import DeclarativeBase
 
 
@@ -10,8 +11,8 @@ class World(DeclarativeBase):
     id = Column(Integer, primary_key=True)
     name = Column(String(255))
     login_count = Column(Integer)
-    updated_at = Column(DateTime, default=datetime.now())
-    created_at = Column(DateTime, default=datetime.now())
+    updated_at = Column(DateTime, default=func.now(), onupdate=func.now())
+    created_at = Column(DateTime, default=func.now())
     description = Column(String(255))
     image_path = Column(String(255))
 
