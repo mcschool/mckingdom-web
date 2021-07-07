@@ -140,22 +140,6 @@ def delete_player(uuid=None):
     return "GET: /api/game/players/<uuid>"
 
 
-@app.route("/api/game/pvp/kill", methods=['PUT'])
-def put_player_kill():
-    data = request.get_json()
-    if data.get('uuid') is None:
-        return "error: no uuid"
-    player = g.session.query(Player).filter(
-        data.get('uuid') == Player.uuid
-    ).first()
-    player.pvp_total_kills = player.pvp_total_kills + 1
-    if player.pvp_max_kill_streaks < data.get('kill_streak'):
-        player.pvp_max_kill_streaks = data.get('kill_streak')
-    g.session.add(player)
-    g.session.commit()
-    return "success"
-
-
 @app.route("/api/admin/pvp/kill/total/rank", methods=['GET'])
 def get_player_pvp_kill_rank():
     order_kills = g.session.query(Player).order_by(
